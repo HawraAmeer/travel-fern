@@ -17,7 +17,7 @@ export const signin = (userData, navigation) => async (dispatch) => {
   try {
     const res = await instance.post("/signin", userData);
     dispatch(setUser(res.data.token));
-    navigation.goBack();
+    // navigation.goBack();
   } catch (error) {
     console.log("ERROR: ", error);
   }
