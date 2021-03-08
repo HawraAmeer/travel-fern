@@ -15,13 +15,3 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
-
-// Store > index.js
-// Actions
-import { checkForToken } from "./actions/authActions";
-import { fetchProducts } from "./actions/productActions";
-import { fetchShops } from "./actions/shopActions";
-
-store.dispatch(checkForToken());
-store.dispatch(fetchShops());
-store.dispatch(fetchProducts());

@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Button } from "react-native";
+
+// Styling Components
+import { Button } from "native-base";
+import { View, Text, TextInput } from "react-native";
 
 const Signin = () => {
   const [user, setUser] = useState({ username: "", password: "" });
@@ -18,7 +21,9 @@ const Signin = () => {
         secureTextEntry={true}
         onChangeText={(password) => setUser({ ...user, password })}
       />
-      <Button>Submit</Button>
+      <Button>
+        <Text>next</Text>
+      </Button>
       <Text>Click to Create New Account!</Text>
     </View>
   );
