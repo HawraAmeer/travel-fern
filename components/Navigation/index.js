@@ -2,6 +2,9 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 
+// Components
+import Signin from "../authentication/Signin";
+
 const RootNavigator = () => {
   const { Navigator, Screen } = createStackNavigator();
 
@@ -22,8 +25,8 @@ const RootNavigator = () => {
       >
         <Screen
           name="Sign-in"
-          //   component={Signin}
-          //   options={{ headerShown: false }}
+          component={Signin}
+          options={{ headerShown: false }}
         />
       </Navigator>
     </NavigationContainer>
