@@ -26,7 +26,7 @@ const RootNavigator = () => {
         <Screen
           name="Sign-in"
           component={Signin}
-          options={{ headerShown: false }}
+          // options={{ headerShown: false }}
         />
       </Navigator>
     </NavigationContainer>
