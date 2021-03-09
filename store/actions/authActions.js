@@ -72,7 +72,7 @@ export const checkForToken = () => async (dispatch) => {
 
 const removeToken = async () => {
   try {
-    await AsyncStorage.removeItem("myToken");
+    await AsyncStorage.removeItem("token");
   } catch (e) {
     console.log(e);
   }
