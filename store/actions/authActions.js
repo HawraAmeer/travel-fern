@@ -17,7 +17,41 @@ export const signin = (userData, navigation) => async (dispatch) => {
   try {
     const res = await instance.post("/signin", userData);
     dispatch(setUser(res.data.token));
-    // navigation.goBack();
+    navigation.replace("Home");
+  } catch (error) {
+    console.log("ERROR: ", error);
+  }
+};
+
+export const signup = (newUser, navigation) => {
+  return async (dispatch) => {
+    try {
+      const response = await instance.post("/signup", newUser);
+      dispatch(setUser(response.data.token));
+      alert("Signed up sucessfully");
+      navigation.replace("Home");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const signout = (navigation) => {
+  removeToken();
+  delete instance.defaults.headers.common.Authorization;
+  alert("See you again");
+  navigation.replace("Home");
+  return {
+    type: types.SET_USER,
+    payload: null,
+  };
+};
+
+export const updateprofile = (updateduser, navigation) => async (dispatch) => {
+  try {
+    const res = await instance.put(`/${updateduser.id}`, updateduser);
+    dispatch(setUser(res.data.token));
+    navigation.replace("Home");
   } catch (error) {
     console.log("ERROR: ", error);
   }
@@ -31,7 +65,15 @@ export const checkForToken = () => async (dispatch) => {
     if (currentTime < user.exp) {
       dispatch(setUser(token));
     } else {
-      //   dispatch(signout());
+      dispatch(signout());
     }
+  }
+};
+
+const removeToken = async () => {
+  try {
+    await AsyncStorage.removeItem("myToken");
+  } catch (e) {
+    console.log(e);
   }
 };
