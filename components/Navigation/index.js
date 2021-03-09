@@ -4,6 +4,9 @@ import { NavigationContainer } from "@react-navigation/native";
 
 // Components
 import Signin from "../authentication/Signin";
+import Signup from "../authentication/Signup";
+import UserProfile from "../UserProfile";
+import Home from "../Home";
 
 const RootNavigator = () => {
   const { Navigator, Screen } = createStackNavigator();
@@ -11,7 +14,7 @@ const RootNavigator = () => {
   return (
     <NavigationContainer>
       <Navigator
-        initialRouteName="Sign-in"
+        initialRouteName="Home"
         screenOptions={{
           cardStyle: { backgroundColor: "white" },
           headerTintColor: "black",
@@ -23,11 +26,10 @@ const RootNavigator = () => {
           },
         }}
       >
-        <Screen
-          name="Sign-in"
-          component={Signin}
-          // options={{ headerShown: false }}
-        />
+        <Screen name="Home" component={Home} />
+        <Screen name="my-account" component={UserProfile} />
+        <Screen name="Sign-up" component={Signup} />
+        <Screen name="Sign-in" component={Signin} />
       </Navigator>
     </NavigationContainer>
   );

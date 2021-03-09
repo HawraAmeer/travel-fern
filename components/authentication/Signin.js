@@ -5,12 +5,12 @@ import { signin } from "../../store/actions/authActions";
 import { Button } from "native-base";
 import { View, Text, TextInput } from "react-native";
 
-const Signin = () => {
+const Signin = ({ navigation }) => {
   const dispatch = useDispatch();
   const [user, setUser] = useState({ username: "", password: "" });
 
   const usersignin = () => {
-    dispatch(signin(user));
+    dispatch(signin(user, navigation));
   };
   return (
     <View>
