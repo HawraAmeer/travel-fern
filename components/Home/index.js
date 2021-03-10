@@ -8,11 +8,15 @@ import { signout } from "../../store/actions/authActions";
 const Home = ({ navigation }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.authReducer.user);
+
+  // REVIEW: Better naming: userSignout
+
   const usersignout = () => {
     dispatch(signout(navigation));
   };
   return (
     <View>
+      {/* REVIEW: INLINE STYLINNGGG!! */}
       <Button
         block
         style={{ margin: 15 }}
@@ -44,6 +48,7 @@ const Home = ({ navigation }) => {
       ) : (
         true
       )}
+      {/* REVIEW: Cleanup the if condition */}
     </View>
   );
 };
