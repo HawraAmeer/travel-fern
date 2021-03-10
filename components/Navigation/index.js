@@ -27,7 +27,7 @@ const RootNavigator = () => {
         }}
       >
         <Screen name="Home" component={Home} />
-        <Screen name="MyAccount" component={Profile} />
+        <Screen name="Profile" component={Profile} />
         <Screen name="Signup" component={Signup} />
         <Screen name="Signin" component={Signin} />
       </Navigator>
