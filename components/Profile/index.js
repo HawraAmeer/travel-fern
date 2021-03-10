@@ -15,13 +15,13 @@ import {
   Input,
   Label,
 } from "native-base";
-import { updateprofile } from "../../store/actions/authActions";
+import { updateUser } from "../../store/actions/authActions";
 const UserProfile = ({ navigation }) => {
   const dispatch = useDispatch();
   const curruser = useSelector((state) => state.authReducer.user);
   const [user, setUser] = useState(curruser);
   const updateuser = () => {
-    dispatch(updateprofile(user, navigation));
+    dispatch(updateUser(user, navigation));
   };
   return (
     <View>
@@ -49,12 +49,10 @@ const UserProfile = ({ navigation }) => {
           />
         </CardItem>
       </Card>
-      {user.email !== curruser.email ? (
+      {user.email !== curruser.email && (
         <Button block style={{ margin: 15 }} onPress={updateuser}>
           <Text>Save Changes</Text>
         </Button>
-      ) : (
-        true
       )}
     </View>
   );

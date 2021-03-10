@@ -47,9 +47,9 @@ export const signout = (navigation) => {
   };
 };
 
-export const updateprofile = (updateduser, navigation) => async (dispatch) => {
+export const updateUser = (updatedUser, navigation) => async (dispatch) => {
   try {
-    const res = await instance.put(`/${updateduser.id}`, updateduser);
+    const res = await instance.put(`/${updatedUser.id}`, updatedUser);
     dispatch(setUser(res.data.token));
     navigation.replace("Home");
   } catch (error) {
@@ -72,7 +72,7 @@ export const checkForToken = () => async (dispatch) => {
 
 const removeToken = async () => {
   try {
-    await AsyncStorage.removeItem("myToken");
+    await AsyncStorage.removeItem("token");
   } catch (e) {
     console.log(e);
   }
