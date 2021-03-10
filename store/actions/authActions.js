@@ -47,7 +47,7 @@ export const signout = (navigation) => {
   };
 };
 
-// REVIEW: Better naming: updateProfile
+// REVIEW: Better naming: updateProfile, updatedUser
 export const updateprofile = (updateduser, navigation) => async (dispatch) => {
   try {
     const res = await instance.put(`/${updateduser.id}`, updateduser);
