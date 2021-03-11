@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signin } from "../../store/actions/authActions";
+
 // Styling Components
-import { Button } from "native-base";
-import { View, Text, TextInput } from "react-native";
+import { View, Text, Form, Item, Input, Label, Button } from "native-base";
 
 const Signin = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -14,23 +14,26 @@ const Signin = ({ navigation }) => {
   };
   return (
     <View>
-      <Text>Sign in</Text>
-      <TextInput
-        placeholder="Username"
-        placeholderTextColor="grey"
-        onChangeText={(username) => setUser({ ...user, username })}
-        autoCapitalize={"none"}
-      />
-      <TextInput
-        placeholder="Password"
-        placeholderTextColor="grey"
-        secureTextEntry={true}
-        onChangeText={(password) => setUser({ ...user, password })}
-      />
-      <Button onPress={usersignin}>
-        <Text>next</Text>
+      <Form>
+        <Item floatingLabel>
+          <Label>Username</Label>
+          <Input
+            autoCapitalize={"none"}
+            onChangeText={(username) => setUser({ ...user, username })}
+          />
+        </Item>
+        <Item floatingLabel last>
+          <Label>Password</Label>
+          <Input
+            secureTextEntry={true}
+            onChangeText={(password) => setUser({ ...user, password })}
+          />
+        </Item>
+      </Form>
+      <Button block style={{ margin: 15 }} onPress={usersignin}>
+        <Text>Sign in</Text>
       </Button>
-      <Text>Click to Create New Account!</Text>
+      <Text>Create New Account!</Text>
     </View>
   );
 };

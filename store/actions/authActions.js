@@ -49,7 +49,7 @@ export const signout = (navigation) => {
 
 export const updateUser = (updatedUser, navigation) => async (dispatch) => {
   try {
-    const res = await instance.put(`/${updatedUser.id}`, updatedUser);
+    const res = await instance.put(`/`, updatedUser);
     dispatch(setUser(res.data.token));
     navigation.replace("Home");
   } catch (error) {
