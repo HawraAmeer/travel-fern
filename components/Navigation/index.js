@@ -7,6 +7,7 @@ import Signin from "../authentication/Signin";
 import Signup from "../authentication/Signup";
 import Profile from "../Profile";
 import Home from "../Home";
+import Search from "../forms/Search";
 
 const RootNavigator = () => {
   const { Navigator, Screen } = createStackNavigator();
@@ -27,6 +28,7 @@ const RootNavigator = () => {
         }}
       >
         <Screen name="Home" component={Home} />
+        <Screen name="SearchFlight" component={Search} />
         <Screen name="Profile" component={Profile} />
         <Screen name="Signup" component={Signup} />
         <Screen name="Signin" component={Signin} />
