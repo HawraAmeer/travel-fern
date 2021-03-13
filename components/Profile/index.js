@@ -15,7 +15,10 @@ import {
   Input,
   Label,
 } from "native-base";
+
+// Actions
 import { updateUser } from "../../store/actions/authActions";
+
 const Profile = ({ navigation }) => {
   const dispatch = useDispatch();
   const curruser = useSelector((state) => state.authReducer.user);

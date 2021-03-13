@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { View } from "react-native";
 import { useDispatch } from "react-redux";
-import { Form, Text } from "native-base";
+import { Button, Form, Text } from "native-base";
 
-//styles imports
+// Styles
 import { DateItemStyled, SearchMsgStyled, SerachButtonStyled } from "./styles";
 
-//compomnents imports
+// Components
 import TripType from "./TripType";
 import DepLocation from "./DepLocation";
 import ArrLocation from "./ArrLocation";
@@ -97,6 +97,14 @@ const Search = ({ navigation }) => {
           Departure and Arrival locations must be diffrent...
         </SearchMsgStyled>
       )}
+
+      <Button
+        block
+        style={{ margin: 15 }}
+        onPress={() => navigation.navigate("FlightList")}
+      >
+        <Text>FlightList</Text>
+      </Button>
     </View>
   );
 };

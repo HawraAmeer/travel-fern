@@ -9,6 +9,7 @@ import Profile from "../Profile";
 import Home from "../Home";
 import Search from "../Search";
 import Locations from "../Search/Locations";
+import FlightList from "../FlightList";
 
 const RootNavigator = () => {
   const { Navigator, Screen } = createStackNavigator();
@@ -29,15 +30,16 @@ const RootNavigator = () => {
         }}
       >
         <Screen name="Home" component={Home} />
+        <Screen name="Profile" component={Profile} />
+        <Screen name="Signup" component={Signup} />
+        <Screen name="Signin" component={Signin} />
         <Screen name="SearchFlight" component={Search} />
         <Screen
           name="Locations"
           component={Locations}
           options={{ title: "Select Location", headerLeft: null }}
         />
-        <Screen name="Profile" component={Profile} />
-        <Screen name="Signup" component={Signup} />
-        <Screen name="Signin" component={Signin} />
+        <Screen name="FlightList" component={FlightList} />
       </Navigator>
     </NavigationContainer>
   );

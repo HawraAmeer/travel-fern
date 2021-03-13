@@ -10,6 +10,8 @@ import {
   ListItem,
 } from "native-base";
 import { useSelector } from "react-redux";
+
+// Components
 import Loading from "../Loading";
 
 const Locations = ({ navigation, route }) => {

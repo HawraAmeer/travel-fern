@@ -1,5 +1,7 @@
 import React from "react";
 import { View, Text, Item, Icon, Label } from "native-base";
+
+//Styles
 import { SearchItemStyled, PassengerIconStyled } from "./styles";
 
 const Passengers = ({ flight, setFlight }) => {
