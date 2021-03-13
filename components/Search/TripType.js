@@ -1,7 +1,9 @@
 import React from "react";
-
 import { View, Label, Picker } from "native-base";
+
+//Styles
 import { SearchItemStyled } from "./styles";
+
 const TripType = ({ flight, setFlight }) => {
   return (
     <SearchItemStyled>

@@ -1,8 +1,9 @@
 import React from "react";
-
 import { View, Label, Text, Icon } from "native-base";
-//styles imports
+
+// Styles
 import { LocationItemStyled } from "./styles";
+
 const ArrLocation = ({
   navigation,
   flight,
