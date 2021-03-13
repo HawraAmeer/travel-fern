@@ -16,7 +16,7 @@ import {
   Label,
 } from "native-base";
 import { updateUser } from "../../store/actions/authActions";
-const UserProfile = ({ navigation }) => {
+const Profile = ({ navigation }) => {
   const dispatch = useDispatch();
   const curruser = useSelector((state) => state.authReducer.user);
   const [user, setUser] = useState(curruser);
@@ -58,4 +58,4 @@ const UserProfile = ({ navigation }) => {
   );
 };
 
-export default UserProfile;
+export default Profile;
