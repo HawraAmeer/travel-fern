@@ -11,8 +11,9 @@ import TripType from "./TripType";
 import DepLocation from "./DepLocation";
 import ArrLocation from "./ArrLocation";
 import DepDate from "./DepDate";
-import ArrDate from "./ArrDate";
+import ReturnDate from "./ReturnDate";
 import Passengers from "./Passengers";
+import FlightSeat from "./FlightSeat";
 
 const Search = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -20,14 +21,15 @@ const Search = ({ navigation }) => {
     depAirport: "",
     arrAirport: "",
     depDate: "",
-    arrDate: "",
+    returnDate: "",
     passengers: 1,
-    tripType: "round", //Roundtrip, Oneway
+    seat: "economy", //Economy, Business
+    type: "roundtrip", //Roundtrip, Oneway
   });
 
   const [display, setDisplay] = useState({
     depDate: new Date(),
-    arrDate: new Date(),
+    returnDate: new Date(),
     depAirport: "",
     arrAirport: "",
   });
@@ -42,6 +44,9 @@ const Search = ({ navigation }) => {
       <Form>
         {/* //----------TRIP TYPE----------// */}
         <TripType flight={flight} setFlight={setFlight} />
+
+        {/* //----------SEAT TYPE----------// */}
+        <FlightSeat flight={flight} setFlight={setFlight} />
 
         {/* //----------DEPARTURE LOCATION----------// */}
         <DepLocation
@@ -68,8 +73,8 @@ const Search = ({ navigation }) => {
             display={display}
             setDisplay={setDisplay}
           />
-          {flight.tripType === "round" && (
-            <ArrDate
+          {flight.type === "roundtrip" && (
+            <ReturnDate
               flight={flight}
               setFlight={setFlight}
               display={display}

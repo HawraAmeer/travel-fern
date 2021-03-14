@@ -9,12 +9,12 @@ const TripType = ({ flight, setFlight }) => {
     <SearchItemStyled>
       <Label>Trip Type:</Label>
       <Picker
-        selectedValue={flight.tripType}
-        onValueChange={(tripType) => {
-          setFlight({ ...flight, tripType });
+        selectedValue={flight.type}
+        onValueChange={(type) => {
+          setFlight({ ...flight, type });
         }}
       >
-        <Picker.Item label="Roundtrip" value="round" />
+        <Picker.Item label="Roundtrip" value="roundtrip" />
         <Picker.Item label="One-way" value="oneweay" />
       </Picker>
     </SearchItemStyled>
