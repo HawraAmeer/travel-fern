@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View } from "react-native";
 import { useDispatch } from "react-redux";
 import { Button, Form, Text } from "native-base";
-
+import moment from "moment";
 // Styles
 import { DateItemStyled, SearchMsgStyled, SerachButtonStyled } from "./styles";
 
@@ -15,28 +15,29 @@ import ReturnDate from "./ReturnDate";
 import Passengers from "./Passengers";
 import FlightSeat from "./FlightSeat";
 
+//Actions
+import { searchFlight } from "../../store/actions/flightActions";
+
 const Search = ({ navigation }) => {
   const dispatch = useDispatch();
-  const [flight, setFlight] = useState({
-    depAirport: "",
-    arrAirport: "",
-    depDate: "",
-    returnDate: "",
-    passengers: 1,
-    seat: "economy", //Economy, Business
-    type: "roundtrip", //Roundtrip, Oneway
-  });
-
   const [display, setDisplay] = useState({
     depDate: new Date(),
     returnDate: new Date(),
     depAirport: "",
     arrAirport: "",
   });
+  const [flight, setFlight] = useState({
+    depAirport: "",
+    arrAirport: "",
+    depDate: moment(display.depDate).format("YYYY-MM-DD"),
+    returnDate: moment(display.returnDate).format("YYYY-MM-DD"),
+    passengers: 1,
+    seat: "economy", //Economy, Business
+    type: "roundtrip", //Roundtrip, Oneway
+  });
 
-  const searchFlight = () => {
-    console.log(flight);
-    // dispatch(searchFlight(flight, navigation));
+  const search = () => {
+    dispatch(searchFlight(flight, navigation));
   };
 
   return (
@@ -88,7 +89,7 @@ const Search = ({ navigation }) => {
       </Form>
       <SerachButtonStyled
         block
-        onPress={searchFlight}
+        onPress={search}
         disabled={
           flight.depAirport === flight.arrAirport ||
           !flight.depAirport ||
