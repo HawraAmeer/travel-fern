@@ -41,7 +41,11 @@ const RootNavigator = () => {
           options={{ title: "Select Location", headerLeft: null }}
         />
         <Screen name="FlightList" component={FlightList} />
-        <Screen name="Filter" component={Filter} />
+        <Screen
+          name="Filter"
+          component={Filter}
+          options={{ headerLeft: null }}
+        />
         <Screen name="Passenger" component={PassengerForm} />
       </Navigator>
     </NavigationContainer>
