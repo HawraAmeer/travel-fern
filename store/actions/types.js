@@ -5,4 +5,4 @@ export const SET_USER = "SET_USER";
 export const FETCH_LOCATION = "FETCH_LOCATION";
 
 //FLight types
-export const SEARCH_FLIGHT = "FETCH_LOCATION";
+export const SEARCH_FLIGHT = "SEARCH_FLIGHT";

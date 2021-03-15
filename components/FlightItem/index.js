@@ -20,7 +20,7 @@ import {
 // Components
 import LineSection from "./LineSection";
 import BookBtn from "../buttons/BookBtn";
-const FlightItem = () => {
+const FlightItem = ({ flight }) => {
   return (
     <FlightCardStyled>
       <CardItem>
@@ -32,28 +32,28 @@ const FlightItem = () => {
             }}
           />
           <Body>
-            <AirlineTextStyled>Gulf Air</AirlineTextStyled>
+            <AirlineTextStyled>{flight.airline.name}</AirlineTextStyled>
           </Body>
         </Left>
         <Right>
-          <AirlineTextStyled>90 BHD</AirlineTextStyled>
+          <AirlineTextStyled>{flight.price} BHD</AirlineTextStyled>
         </Right>
       </CardItem>
       <CardItem cardBody>
         <Left>
-          <TimeTextStyled>22:30</TimeTextStyled>
+          <TimeTextStyled>{flight.depTime}</TimeTextStyled>
         </Left>
         <Right>
-          <TimeTextStyled>23:59</TimeTextStyled>
+          <TimeTextStyled>{flight.arrTime}</TimeTextStyled>
         </Right>
       </CardItem>
       <LineSection />
       <LocCardItemStyled cardBody>
         <Left>
-          <Text>Bahrain BAH</Text>
+          <Text>{flight.departure.name}</Text>
         </Left>
         <Right>
-          <Text>Dubai DXB</Text>
+          <Text>{flight.arrival.name}</Text>
         </Right>
       </LocCardItemStyled>
       <Item></Item>
