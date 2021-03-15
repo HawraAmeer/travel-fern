@@ -13,7 +13,6 @@ const reducer = (state = initialState, action) => {
         flights: action.payload,
         loading: false,
       };
-
     default:
       return state;
   }

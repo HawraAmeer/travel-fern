@@ -30,14 +30,15 @@ const Search = ({ navigation }) => {
     depAirport: "",
     arrAirport: "",
     depDate: moment(display.depDate).format("YYYY-MM-DD"),
-    returnDate: moment(display.returnDate).format("YYYY-MM-DD"),
+    returnDate: "",
     passengers: 1,
     seat: "economy", //Economy, Business
     type: "roundtrip", //Roundtrip, Oneway
   });
 
   const search = () => {
-    dispatch(searchFlight(flight, navigation));
+    dispatch(searchFlight(flight));
+    navigation.navigate("FlightList");
   };
 
   return (
@@ -87,6 +88,7 @@ const Search = ({ navigation }) => {
         {/* //----------NUMBER OF PASSENGERS----------// */}
         <Passengers flight={flight} setFlight={setFlight} />
       </Form>
+
       <SerachButtonStyled
         block
         onPress={search}
@@ -98,19 +100,12 @@ const Search = ({ navigation }) => {
       >
         <Text>Search</Text>
       </SerachButtonStyled>
+
       {flight.arrAirport === flight.depAirport && (
         <SearchMsgStyled>
           Departure and Arrival locations must be diffrent...
         </SearchMsgStyled>
       )}
-
-      <Button
-        block
-        style={{ margin: 15 }}
-        onPress={() => navigation.navigate("FlightList")}
-      >
-        <Text>FlightList</Text>
-      </Button>
     </View>
   );
 };

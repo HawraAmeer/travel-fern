@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Label, Picker } from "native-base";
+import { View, Label, Picker, Icon } from "native-base";
 
 //Styles
 import { SearchItemStyled } from "./styles";
@@ -7,8 +7,11 @@ import { SearchItemStyled } from "./styles";
 const TripType = ({ flight, setFlight }) => {
   return (
     <SearchItemStyled>
-      <Label>Trip Type:</Label>
+      <Label>Trip</Label>
       <Picker
+        iosIcon={
+          <Icon type="AntDesign" name="down" style={{ marginLeft: 200 }} />
+        }
         selectedValue={flight.type}
         onValueChange={(type) => {
           setFlight({ ...flight, type });
