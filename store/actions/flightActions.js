@@ -24,3 +24,13 @@ export const setFlight = (flight) => {
     payload: flight,
   };
 };
+
+//----------BOOK Flight----------//
+export const bookFlight = (booking) => async () => {
+  try {
+    const res = await instance.post("/checkout", booking);
+    alert("successfully booked");
+  } catch (error) {
+    console.log("Error:", error);
+  }
+};
