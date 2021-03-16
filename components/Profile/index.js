@@ -14,10 +14,12 @@ import {
   Right,
   Input,
   Label,
+  H2,
 } from "native-base";
 
 // Actions
 import { updateUser } from "../../store/actions/authActions";
+import FlightItem from "./FlightItem";
 
 const Profile = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -52,11 +54,14 @@ const Profile = ({ navigation }) => {
           />
         </CardItem>
       </Card>
+      {/* remove inline styling */}
       {user.email !== curruser.email && (
         <Button block style={{ margin: 15 }} onPress={updateuser}>
           <Text>Save Changes</Text>
         </Button>
       )}
+      <H2>Booked Flights</H2>
+      <FlightItem />
     </View>
   );
 };

@@ -51,6 +51,7 @@ const PassengerItem = ({ passengers, setPassengers, passengerNum }) => {
           <Picker.Item label="Infant (<2 years)" value="infant" />
         </Picker>
       </PassItemStyled>
+      {/* remove inline styling */}
       {addBtn && (
         <Button
           rounded

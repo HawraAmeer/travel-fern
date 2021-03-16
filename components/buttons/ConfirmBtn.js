@@ -50,6 +50,7 @@ const ConfirmBtn = ({ navigation }) => {
 
   return (
     <View>
+      {/* remove inline style */}
       <Button block style={{ margin: 15 }} onPress={handlePress}>
         <Text>{user ? "Confirm" : "Next"}</Text>
       </Button>

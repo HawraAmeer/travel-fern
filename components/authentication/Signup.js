@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { View, Text, Form, Item, Input, Label, Button } from "native-base";
+//remove imports that are not used
 import { useForm, Controller } from "react-hook-form";
 import { signup } from "../../store/actions/authActions";
 
@@ -43,6 +44,7 @@ const Signup = ({ navigation }) => {
           />
         </Item>
       </Form>
+      {/* remove inline styling */}
       <Button block style={{ margin: 15 }} onPress={usersignup}>
         <Text>Sign up</Text>
       </Button>

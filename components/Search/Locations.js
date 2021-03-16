@@ -52,6 +52,7 @@ const Locations = ({ navigation, route }) => {
         <Input placeholder="Search..." onChangeText={setQuery} />
       </Item>
       <List>{locList}</List>
+      {/* remove inline styling */}
       <Button block style={{ margin: 15 }} onPress={() => navigation.goBack()}>
         <Text>Cancel</Text>
       </Button>

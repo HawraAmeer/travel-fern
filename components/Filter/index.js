@@ -42,6 +42,7 @@ const Filter = ({ navigation, route }) => {
   ));
 
   return (
+    // we can put some sections into components
     <View>
       <PriceTextStyled>
         Price {"\n"} {filter.price} BHD

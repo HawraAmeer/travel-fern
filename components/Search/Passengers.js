@@ -13,6 +13,7 @@ const Passengers = ({ flight, setFlight }) => {
         <PassengerIconStyled
           type="AntDesign"
           name="minuscircleo"
+          // remove inline styling
           style={{ marginLeft: 10 }}
           onPress={() =>
             setFlight({
@@ -27,6 +28,7 @@ const Passengers = ({ flight, setFlight }) => {
       <PassengerIconStyled
         type="AntDesign"
         name="pluscircleo"
+        // remove inline styling
         style={{ marginLeft: 10 }}
         onPress={() =>
           setFlight({

@@ -30,6 +30,7 @@ const Signin = ({ navigation }) => {
           />
         </Item>
       </Form>
+      {/* remove inline styling */}
       <Button block style={{ margin: 15 }} onPress={usersignin}>
         <Text>Sign in</Text>
       </Button>
