@@ -6,3 +6,4 @@ export const FETCH_LOCATION = "FETCH_LOCATION";
 
 //FLight types
 export const SEARCH_FLIGHT = "SEARCH_FLIGHT";
+export const SET_FLIGHT = "SET_FLIGHT";

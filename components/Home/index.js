@@ -23,20 +23,6 @@ const Home = ({ navigation }) => {
       <Button
         block
         style={{ margin: 15 }}
-        onPress={() => navigation.navigate("Filter")}
-      >
-        <Text>Filter</Text>
-      </Button>
-      <Button
-        block
-        style={{ margin: 15 }}
-        onPress={() => navigation.navigate("Passenger")}
-      >
-        <Text>Booking Form</Text>
-      </Button>
-      <Button
-        block
-        style={{ margin: 15 }}
         onPress={() => navigation.navigate("Signup")}
       >
         <Text>Sign in</Text>

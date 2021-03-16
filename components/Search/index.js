@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View } from "react-native";
 import { useDispatch } from "react-redux";
-import { Button, Form, Text } from "native-base";
+import { Form, Text } from "native-base";
 import moment from "moment";
 // Styles
 import { DateItemStyled, SearchMsgStyled, SerachButtonStyled } from "./styles";

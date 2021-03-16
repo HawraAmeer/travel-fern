@@ -18,7 +18,7 @@ const TripType = ({ flight, setFlight }) => {
         }}
       >
         <Picker.Item label="Roundtrip" value="roundtrip" />
-        <Picker.Item label="One-way" value="oneweay" />
+        <Picker.Item label="One-way" value="oneway" />
       </Picker>
     </SearchItemStyled>
   );

@@ -1,20 +1,30 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { View, Icon, Button, Text, Content } from "native-base";
-
+import moment from "moment";
 // Styles
 import { DatesTextStyled, TitleTextSyled, TitleViewStyled } from "./styles";
 
 // Components
 import FlightItem from "../FlightItem";
-import { useSelector } from "react-redux";
 import Loading from "../Loading";
 
 const FlightList = ({ navigation, route }) => {
   const flightsReducer = useSelector((state) => state.flightReducer);
-
+  const locations = useSelector((state) => state.locationReducer.locations);
   if (flightsReducer.loading) return <Loading />;
 
+  const searchedFlight = flightsReducer.searchedFlight;
+  const departure = locations.find(
+    (location) => location.id === searchedFlight.depAirport
+  );
+  const arrival = locations.find(
+    (location) => location.id === searchedFlight.arrAirport
+  );
+
   let flightList = flightsReducer.flights;
+
+  //if user filter
   if (route.params) {
     const filter = route.params.filter;
 
@@ -41,11 +51,13 @@ const FlightList = ({ navigation, route }) => {
     <Content>
       <View>
         <TitleViewStyled>
-          <TitleTextSyled>Manama</TitleTextSyled>
+          <TitleTextSyled>{departure.name}</TitleTextSyled>
           <Icon type="AntDesign" name="arrowright" />
-          <TitleTextSyled> Dubai</TitleTextSyled>
+          <TitleTextSyled>{arrival.name}</TitleTextSyled>
         </TitleViewStyled>
-        <DatesTextStyled>Sun, 21 Mar - Sun, 28 Mar </DatesTextStyled>
+        <DatesTextStyled>
+          {moment(searchedFlight.depDate).format("dddd, D MMMM")}
+        </DatesTextStyled>
         {_flightList}
         <Button
           block
