@@ -1,14 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  Label,
-  Picker,
-  Text,
-  Button,
-  Left,
-  Body,
-  Item,
-} from "native-base";
+import { View, Label, Picker, Text, Item } from "native-base";
 
 import MultiSlider from "@ptomasroos/react-native-multi-slider";
 import {

@@ -57,7 +57,7 @@ const FlightItem = ({ flight }) => {
         </Right>
       </LocCardItemStyled>
       <Item></Item>
-      <BookBtn />
+      <BookBtn flight={flight} />
     </FlightCardStyled>
   );
 };
