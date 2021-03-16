@@ -25,6 +25,7 @@ const FlightItem = ({ flight }) => {
     <FlightCardStyled>
       <CardItem>
         <Left>
+          {/* put image in assets than import it, or put the one that comes from backend */}
           <Thumbnail
             source={{
               uri:

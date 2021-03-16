@@ -59,17 +59,19 @@ const FlightList = ({ navigation, route }) => {
           {moment(searchedFlight.depDate).format("dddd, D MMMM")}
         </DatesTextStyled>
         {_flightList}
-        <Button
-          block
-          onPress={() => {
-            (flights = flightsReducer.flights),
-              navigation.navigate("Filter", {
-                flights,
-              });
-          }}
-        >
-          <Text>Filter</Text>
-        </Button>
+        {flightList.length > 1 && (
+          <Button
+            block
+            onPress={() => {
+              (flights = flightsReducer.flights),
+                navigation.navigate("Filter", {
+                  flights,
+                });
+            }}
+          >
+            <Text>Filter</Text>
+          </Button>
+        )}
       </View>
     </Content>
   );

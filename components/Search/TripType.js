@@ -10,6 +10,7 @@ const TripType = ({ flight, setFlight }) => {
       <Label>Trip</Label>
       <Picker
         iosIcon={
+          // remove inline styling
           <Icon type="AntDesign" name="down" style={{ marginLeft: 200 }} />
         }
         selectedValue={flight.type}

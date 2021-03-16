@@ -10,7 +10,7 @@ import { signout } from "../../store/actions/authActions";
 const Home = ({ navigation }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.authReducer.user);
-
+  //remove all inline styling
   return (
     <View>
       <Button

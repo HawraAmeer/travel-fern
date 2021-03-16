@@ -51,6 +51,7 @@ const Search = ({ navigation }) => {
         <FlightSeat flight={flight} setFlight={setFlight} />
 
         {/* //----------DEPARTURE LOCATION----------// */}
+        {/* bothe locations can use one component */}
         <DepLocation
           navigation={navigation}
           flight={flight}
@@ -68,6 +69,7 @@ const Search = ({ navigation }) => {
           setDisplay={setDisplay}
         />
         {/* //----------DEPARTURE & ARRIVAL DATES----------// */}
+        {/* bothe dates can use one component */}
         <DateItemStyled>
           <DepDate
             flight={flight}

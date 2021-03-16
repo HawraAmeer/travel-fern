@@ -9,6 +9,7 @@ const FlightSeat = ({ flight, setFlight }) => {
     <SearchItemStyled>
       <Label>Class</Label>
       <Picker
+        // remove inline styling
         iosIcon={
           <Icon type="AntDesign" name="down" style={{ marginLeft: 193 }} />
         }

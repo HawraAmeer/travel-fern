@@ -29,6 +29,7 @@ const PassengerForm = ({ navigation }) => {
   return (
     <Content>
       <List>{passengersForm}</List>
+      {/* remove inline styling */}
       <Button
         block
         style={{ margin: 15 }}
