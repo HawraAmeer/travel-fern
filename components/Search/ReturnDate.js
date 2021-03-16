@@ -5,6 +5,7 @@ import moment from "moment";
 
 const ReturnDate = ({ flight, setFlight, display, setDisplay }) => {
   return (
+    // remove inline styling
     <View style={{ marginLeft: 30 }}>
       <Label>
         <Icon type="AntDesign" name="calendar" />

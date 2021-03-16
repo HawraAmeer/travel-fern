@@ -1,4 +1,6 @@
+//remove comments
 import React from "react";
+//both imported from one source, one import is better
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { CardItem, Text, Left, Right } from "native-base";
