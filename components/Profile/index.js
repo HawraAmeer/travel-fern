@@ -8,10 +8,8 @@ import {
   Thumbnail,
   Text,
   Button,
-  Icon,
   Left,
   Body,
-  Right,
   Input,
   Label,
 } from "native-base";
@@ -21,8 +19,8 @@ import { updateUser } from "../../store/actions/authActions";
 
 const Profile = ({ navigation }) => {
   const dispatch = useDispatch();
-  const curruser = useSelector((state) => state.authReducer.user);
-  const [user, setUser] = useState(curruser);
+  const authReducer = useSelector((state) => state.authReducer);
+  const [user, setUser] = useState(authReducer.user);
   const updateuser = () => {
     dispatch(updateUser(user, navigation));
   };

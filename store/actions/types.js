@@ -1,5 +1,6 @@
 // User types
 export const SET_USER = "SET_USER";
+export const FETCH_HISTORY = "FETCH_HISTORY";
 
 //Location types
 export const FETCH_LOCATION = "FETCH_LOCATION";
