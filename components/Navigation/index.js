@@ -12,6 +12,7 @@ import Locations from "../Search/Locations";
 import FlightList from "../FlightList";
 import PassengerForm from "../PassengerForm";
 import Filter from "../Filter";
+import Booking from "../Booking";
 const RootNavigator = () => {
   const { Navigator, Screen } = createStackNavigator();
 
@@ -47,6 +48,7 @@ const RootNavigator = () => {
           options={{ headerLeft: null }}
         />
         <Screen name="Passenger" component={PassengerForm} />
+        <Screen name="Booking" component={Booking} />
       </Navigator>
     </NavigationContainer>
   );

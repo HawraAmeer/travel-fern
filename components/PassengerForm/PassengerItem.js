@@ -1,16 +1,26 @@
-import React from "react";
-import { View, ListItem, Picker, Input } from "native-base";
+import React, { useState } from "react";
+import { View, ListItem, Picker, Input, Button, Text } from "native-base";
 import {
   PassItemStyled,
   PassLabelStyled,
   PassTextStyled,
   PickerArrow,
 } from "./styles";
-const PassengerItem = ({ passenger, setPassenger }) => {
+const PassengerItem = ({ passengers, setPassengers, passengerNum }) => {
+  const [passenger, setPassenger] = useState({
+    firstName: "",
+    lastName: "",
+    ageGroup: "adult",
+  });
+  const [addBtn, setAddBtn] = useState(true);
+  const addPassenger = () => {
+    setPassengers([...passengers, passenger]);
+    setAddBtn(false);
+  };
   return (
     <View>
       <ListItem itemDivider>
-        <PassTextStyled>Passenger 1</PassTextStyled>
+        <PassTextStyled>Passenger {passengerNum}</PassTextStyled>
       </ListItem>
       <PassItemStyled inlineLabel>
         <PassLabelStyled>First Name:</PassLabelStyled>
@@ -41,6 +51,16 @@ const PassengerItem = ({ passenger, setPassenger }) => {
           <Picker.Item label="Infant (<2 years)" value="infant" />
         </Picker>
       </PassItemStyled>
+      {addBtn && (
+        <Button
+          rounded
+          bordered
+          onPress={() => addPassenger()}
+          style={{ alignSelf: "flex-end", margin: 15, height: 35 }}
+        >
+          <Text>Add</Text>
+        </Button>
+      )}
     </View>
   );
 };
