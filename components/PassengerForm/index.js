@@ -1,30 +1,39 @@
 import React, { useState } from "react";
 import { List, Text, Content, Button } from "native-base";
 import PassengerItem from "./PassengerItem";
-import { useSelector } from "react-redux";
-const PassengerForm = () => {
+import { useDispatch, useSelector } from "react-redux";
+import { setPassengersList } from "../../store/actions/passengerActions";
+const PassengerForm = ({ navigation }) => {
+  const dispatch = useDispatch();
   const flightsReducer = useSelector((state) => state.flightReducer);
-  const [passenger, setPassenger] = useState({
-    firstName: "",
-    lastName: "",
-    ageGroup: "adult",
-  });
+  const [passengers, setPassengers] = useState([]);
 
   const searchedFlight = flightsReducer.searchedFlight;
-  const departureFlight = flightsReducer.departureFlight;
-  const returnFlight = flightsReducer.returnFlight;
-  console.log("🚀 searchedFlight", searchedFlight);
-  console.log("🚀 departureFlight", departureFlight);
-  console.log("🚀returnFlight", returnFlight);
+
+  const passengersForm = new Array(searchedFlight.passengers)
+    .fill()
+    .map((_, index) => (
+      <PassengerItem
+        passengers={passengers}
+        setPassengers={setPassengers}
+        key={index}
+        passengerNum={index + 1}
+      />
+    ));
+
+  const setBooking = () => {
+    dispatch(setPassengersList(passengers));
+    navigation.navigate("Booking");
+  };
+
   return (
     <Content>
-      <List>
-        <PassengerItem passenger={passenger} setPassenger={setPassenger} />
-      </List>
+      <List>{passengersForm}</List>
       <Button
         block
         style={{ margin: 15 }}
-        onPress={() => console.log(passenger)}
+        onPress={() => setBooking()}
+        disabled={passengers.length !== searchedFlight.passengers}
       >
         <Text>Next</Text>
       </Button>

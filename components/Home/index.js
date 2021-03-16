@@ -23,7 +23,7 @@ const Home = ({ navigation }) => {
       <Button
         block
         style={{ margin: 15 }}
-        onPress={() => navigation.navigate("Signup")}
+        onPress={() => navigation.navigate("Signin")}
       >
         <Text>Sign in</Text>
       </Button>
