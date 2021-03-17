@@ -1,4 +1,6 @@
 import React from "react";
+
+// Styling Components
 import {
   CardItem,
   Thumbnail,
@@ -8,21 +10,14 @@ import {
   Right,
   Item,
 } from "native-base";
-
-// Styles
-import {
-  AirlineTextStyled,
-  FlightCardStyled,
-  LocCardItemStyled,
-  TimeTextStyled,
-} from "./styles";
+import { AirlineText, FlightCard, LocCardItem, TimeText } from "./styles";
 
 // Components
 import LineSection from "./LineSection";
 import BookBtn from "../buttons/BookBtn";
 const FlightItem = ({ flight }) => {
   return (
-    <FlightCardStyled>
+    <FlightCard>
       <CardItem>
         <Left>
           {/* put image in assets than import it, or put the one that comes from backend */}
@@ -33,33 +28,33 @@ const FlightItem = ({ flight }) => {
             }}
           />
           <Body>
-            <AirlineTextStyled>{flight.airline.name}</AirlineTextStyled>
+            <AirlineText>{flight.airline.name}</AirlineText>
           </Body>
         </Left>
         <Right>
-          <AirlineTextStyled>{flight.price} BHD</AirlineTextStyled>
+          <AirlineText>{flight.price} BHD</AirlineText>
         </Right>
       </CardItem>
       <CardItem cardBody>
         <Left>
-          <TimeTextStyled>{flight.depTime}</TimeTextStyled>
+          <TimeText>{flight.depTime}</TimeText>
         </Left>
         <Right>
-          <TimeTextStyled>{flight.arrTime}</TimeTextStyled>
+          <TimeText>{flight.arrTime}</TimeText>
         </Right>
       </CardItem>
       <LineSection />
-      <LocCardItemStyled cardBody>
+      <LocCardItem cardBody>
         <Left>
           <Text>{flight.departure.name}</Text>
         </Left>
         <Right>
           <Text>{flight.arrival.name}</Text>
         </Right>
-      </LocCardItemStyled>
+      </LocCardItem>
       <Item></Item>
       <BookBtn flight={flight} />
-    </FlightCardStyled>
+    </FlightCard>
   );
 };
 

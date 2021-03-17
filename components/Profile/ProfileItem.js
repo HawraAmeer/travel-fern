@@ -1,7 +1,7 @@
 import { View, Text, Card, CardItem } from "native-base";
 import React from "react";
 
-const FlightItem = () => {
+const ProfileItem = ({ flight }) => {
   return (
     <View>
       <Card>
@@ -22,4 +22,4 @@ const FlightItem = () => {
   );
 };
 
-export default FlightItem;
+export default ProfileItem;

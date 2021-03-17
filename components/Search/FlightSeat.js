@@ -1,18 +1,16 @@
 import React from "react";
-import { View, Label, Picker, Icon } from "native-base";
 
-//Styles
-import { SearchItemStyled } from "./styles";
+// Styling Components
+import { View, Label, Picker, Icon } from "native-base";
+import { ArrowDown, SearchItem } from "./styles";
 
 const FlightSeat = ({ flight, setFlight }) => {
   return (
-    <SearchItemStyled>
+    <SearchItem>
       <Label>Class</Label>
       <Picker
         // remove inline styling
-        iosIcon={
-          <Icon type="AntDesign" name="down" style={{ marginLeft: 193 }} />
-        }
+        iosIcon={<ArrowDown type="AntDesign" name="down" />}
         selectedValue={flight.seat}
         onValueChange={(seat) => {
           setFlight({ ...flight, seat });
@@ -21,7 +19,7 @@ const FlightSeat = ({ flight, setFlight }) => {
         <Picker.Item label="Economy" value="economy" />
         <Picker.Item label="Business" value="business" />
       </Picker>
-    </SearchItemStyled>
+    </SearchItem>
   );
 };
 

@@ -1,25 +1,34 @@
 import styled from "styled-components";
 import { Button, Icon, Item, Text } from "native-base";
 
-export const DateItemStyled = styled(Item)`
+export const ArrowDown = styled(Icon)`
+  margin-left: 193px;
+`;
+export const TypeIcon = styled(Icon)`
+  margin-left: 200px;
+`;
+export const DateItem = styled(Item)`
   margin: 5px 20px;
 `;
-export const LocationItemStyled = styled(Item)`
+export const LocationItem = styled(Item)`
   padding: 15px 0px;
 `;
 
-export const SearchItemStyled = styled(Item)`
+export const SearchItem = styled(Item)`
   padding: 10px 0px;
 `;
-export const PassengerIconStyled = styled(Icon)`
+export const PassengerIcon = styled(Icon)`
   margin-left: 10px;
 `;
 
-export const SerachButtonStyled = styled(Button)`
+export const SerachButton = styled(Button)`
+  margin: 15px;
+`;
+export const CancelButton = styled(Button)`
   margin: 15px;
 `;
 
-export const SearchMsgStyled = styled(Text)`
+export const SearchMsg = styled(Text)`
   text-align: center;
   margin-top: -10px;
   color: gray;

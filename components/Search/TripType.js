@@ -1,18 +1,15 @@
 import React from "react";
-import { View, Label, Picker, Icon } from "native-base";
+import { Label, Picker } from "native-base";
 
-//Styles
-import { SearchItemStyled } from "./styles";
+// Styling Components
+import { SearchItem, TypeIcon } from "./styles";
 
 const TripType = ({ flight, setFlight }) => {
   return (
-    <SearchItemStyled>
+    <SearchItem>
       <Label>Trip</Label>
       <Picker
-        iosIcon={
-          // remove inline styling
-          <Icon type="AntDesign" name="down" style={{ marginLeft: 200 }} />
-        }
+        iosIcon={<TypeIcon type="AntDesign" name="down" />}
         selectedValue={flight.type}
         onValueChange={(type) => {
           setFlight({ ...flight, type });
@@ -21,7 +18,7 @@ const TripType = ({ flight, setFlight }) => {
         <Picker.Item label="Roundtrip" value="roundtrip" />
         <Picker.Item label="One-way" value="oneway" />
       </Picker>
-    </SearchItemStyled>
+    </SearchItem>
   );
 };
 

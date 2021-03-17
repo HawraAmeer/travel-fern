@@ -1,4 +1,10 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+
+// Components
+import Loading from "../Loading";
+
+// Styling Components
 import {
   Input,
   Text,
@@ -9,10 +15,7 @@ import {
   List,
   ListItem,
 } from "native-base";
-import { useSelector } from "react-redux";
-
-// Components
-import Loading from "../Loading";
+import { CancelButton } from "./styles";
 
 const Locations = ({ navigation, route }) => {
   const [query, setQuery] = useState("");
@@ -52,10 +55,9 @@ const Locations = ({ navigation, route }) => {
         <Input placeholder="Search..." onChangeText={setQuery} />
       </Item>
       <List>{locList}</List>
-      {/* remove inline styling */}
-      <Button block style={{ margin: 15 }} onPress={() => navigation.goBack()}>
+      <CancelButton onPress={() => navigation.goBack()}>
         <Text>Cancel</Text>
-      </Button>
+      </CancelButton>
     </View>
   );
 };

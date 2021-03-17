@@ -1,8 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { View, Text, H2, H3, List, ListItem } from "native-base";
+
+//Components
 import FlightItem from "../FlightItem";
 import ConfirmBtn from "../buttons/ConfirmBtn";
+
+// Styling Components
+import { View, Text, H2, H3, List, ListItem } from "native-base";
 
 const Booking = ({ navigation }) => {
   const flightsReducer = useSelector((state) => state.flightReducer);

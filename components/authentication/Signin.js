@@ -3,7 +3,8 @@ import { useDispatch } from "react-redux";
 import { signin } from "../../store/actions/authActions";
 
 // Styling Components
-import { View, Text, Form, Item, Input, Label, Button } from "native-base";
+import { View, Text, Form, Item, Input, Label } from "native-base";
+import { AuthButton } from "./styles";
 
 const Signin = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -30,10 +31,9 @@ const Signin = ({ navigation }) => {
           />
         </Item>
       </Form>
-      {/* remove inline styling */}
-      <Button block style={{ margin: 15 }} onPress={usersignin}>
+      <AuthButton onPress={usersignin}>
         <Text>Sign in</Text>
-      </Button>
+      </AuthButton>
       <Text>Create New Account!</Text>
     </View>
   );

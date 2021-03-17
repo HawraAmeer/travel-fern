@@ -1,8 +1,14 @@
 import React, { useState } from "react";
-import { List, Text, Content, Button } from "native-base";
-import PassengerItem from "./PassengerItem";
 import { useDispatch, useSelector } from "react-redux";
 import { setPassengersList } from "../../store/actions/passengerActions";
+
+//Components
+import PassengerItem from "./PassengerItem";
+
+// Styling Components
+import { List, Text, Content } from "native-base";
+import { NextButton } from "./styles";
+
 const PassengerForm = ({ navigation }) => {
   const dispatch = useDispatch();
   const flightsReducer = useSelector((state) => state.flightReducer);
@@ -29,15 +35,13 @@ const PassengerForm = ({ navigation }) => {
   return (
     <Content>
       <List>{passengersForm}</List>
-      {/* remove inline styling */}
-      <Button
+      <NextButton
         block
-        style={{ margin: 15 }}
-        onPress={() => setBooking()}
+        onPress={setBooking}
         disabled={passengers.length !== searchedFlight.passengers}
       >
         <Text>Next</Text>
-      </Button>
+      </NextButton>
     </Content>
   );
 };

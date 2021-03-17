@@ -1,7 +1,9 @@
 import React from "react";
-import { View, Label, Text, Icon } from "native-base";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
+
+// Styling Components
+import { View, Label, Text, Icon } from "native-base";
 
 const DepDate = ({ flight, setFlight, display, setDisplay }) => {
   return (
