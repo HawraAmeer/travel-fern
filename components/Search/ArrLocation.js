@@ -1,8 +1,8 @@
 import React from "react";
-import { View, Label, Text, Icon } from "native-base";
 
-// Styles
-import { LocationItemStyled } from "./styles";
+// Styling Components
+import { View, Label, Text, Icon } from "native-base";
+import { LocationItem } from "./styles";
 
 const ArrLocation = ({
   navigation,
@@ -12,7 +12,7 @@ const ArrLocation = ({
   setDisplay,
 }) => {
   return (
-    <LocationItemStyled
+    <LocationItem
       onPress={() => {
         request = "arrAirport";
         navigation.navigate("Locations", {
@@ -27,7 +27,7 @@ const ArrLocation = ({
       <Icon type="MaterialCommunityIcons" name="airplane-landing" />
       <Label>To</Label>
       <Text>{display.arrAirport} </Text>
-    </LocationItemStyled>
+    </LocationItem>
   );
 };
 

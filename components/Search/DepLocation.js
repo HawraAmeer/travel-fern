@@ -1,8 +1,8 @@
 import React from "react";
-import { View, Label, Text, Icon } from "native-base";
 
-// Styles
-import { LocationItemStyled } from "./styles";
+// Styling Components
+import { View, Label, Text, Icon } from "native-base";
+import { LocationItem } from "./styles";
 
 const DepLocation = ({
   navigation,
@@ -12,7 +12,7 @@ const DepLocation = ({
   setDisplay,
 }) => {
   return (
-    <LocationItemStyled
+    <LocationItem
       onPress={() => {
         request = "depAirport";
         navigation.navigate("Locations", {
@@ -27,7 +27,7 @@ const DepLocation = ({
       <Icon type="MaterialCommunityIcons" name="airplane-takeoff" />
       <Label>From </Label>
       <Text>{display.depAirport} </Text>
-    </LocationItemStyled>
+    </LocationItem>
   );
 };
 

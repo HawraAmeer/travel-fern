@@ -1,33 +1,48 @@
-import React, { useState } from "react";
-import { View } from "react-native";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchHistory, updateUser } from "../../store/actions/authActions";
+
+//Components
+import ProfileItem from "./ProfileItem";
+import Loading from "../Loading";
+
+// Styling Components
 import {
+  View,
   Card,
   CardItem,
   Thumbnail,
   Text,
   Button,
-  Icon,
   Left,
   Body,
-  Right,
   Input,
   Label,
   H2,
 } from "native-base";
-
-// Actions
-import { updateUser } from "../../store/actions/authActions";
-import FlightItem from "./FlightItem";
+import { UpdateButton } from "./styles";
 
 const Profile = ({ navigation }) => {
   const dispatch = useDispatch();
-  const curruser = useSelector((state) => state.authReducer.user);
+  const authReducer = useSelector((state) => state.authReducer);
+  const curruser = authReducer.user;
   const [user, setUser] = useState(curruser);
+
+  useEffect(() => {
+    dispatch(fetchHistory());
+  }, [dispatch]);
+
+  if (authReducer.loading) return <Loading />;
+
+  console.log("user flights", authReducer.history);
+  const flights = authReducer.history.map((flight) => (
+    <ProfileItem flight={flight} key={flight.id} />
+  ));
+
   const updateuser = () => {
     dispatch(updateUser(user, navigation));
   };
+
   return (
     <View>
       <Card>
@@ -56,12 +71,12 @@ const Profile = ({ navigation }) => {
       </Card>
       {/* remove inline styling */}
       {user.email !== curruser.email && (
-        <Button block style={{ margin: 15 }} onPress={updateuser}>
+        <UpdateButton block onPress={updateuser}>
           <Text>Save Changes</Text>
-        </Button>
+        </UpdateButton>
       )}
       <H2>Booked Flights</H2>
-      <FlightItem />
+      <ProfileItem />
     </View>
   );
 };

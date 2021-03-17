@@ -1,8 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { View, Text, Button } from "native-base";
-import { Alert } from "react-native";
 import { bookFlight } from "../../store/actions/flightActions";
+
+// Styling Components
+import { View, Text } from "native-base";
+import { Alert } from "react-native";
+import { NextButton } from "./styles";
+
 const ConfirmBtn = ({ navigation }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.authReducer.user);
@@ -50,10 +54,9 @@ const ConfirmBtn = ({ navigation }) => {
 
   return (
     <View>
-      {/* remove inline style */}
-      <Button block style={{ margin: 15 }} onPress={handlePress}>
+      <NextButton block onPress={handlePress}>
         <Text>{user ? "Confirm" : "Next"}</Text>
-      </Button>
+      </NextButton>
     </View>
   );
 };

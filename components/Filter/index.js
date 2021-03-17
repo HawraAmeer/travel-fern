@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import { View, Label, Picker, Text, Item } from "native-base";
-
 import MultiSlider from "@ptomasroos/react-native-multi-slider";
+
+// Styling Components
+import { View, Label, Picker, Text, Item } from "native-base";
 import {
-  AirlineItemStyled,
-  DownIconStyled,
+  AirlineItem,
+  DownIcon,
   FliterButton,
-  PriceItemStyled,
-  PriceTextStyled,
-  TimeItemStyled,
-  TimeTextStyled,
+  PriceItem,
+  PriceText,
+  TimeItem,
+  TimeText,
 } from "./style";
 
 const Filter = ({ navigation, route }) => {
@@ -44,11 +45,11 @@ const Filter = ({ navigation, route }) => {
   return (
     // we can put some sections into components
     <View>
-      <PriceTextStyled>
+      <PriceText>
         Price {"\n"} {filter.price} BHD
-      </PriceTextStyled>
+      </PriceText>
       <Item>
-        <PriceItemStyled>
+        <PriceItem>
           <MultiSlider
             min={minRange()}
             max={maxRange()}
@@ -56,29 +57,29 @@ const Filter = ({ navigation, route }) => {
               setFilter({ ...filter, price: e[0] });
             }}
           />
-        </PriceItemStyled>
+        </PriceItem>
       </Item>
 
-      <TimeTextStyled>
+      <TimeText>
         Time {"\n"}
         {filter.time
           ? `${filter.time - 4}:00 - ${filter.time}:00`
           : "00:00 - 23:59"}
-      </TimeTextStyled>
+      </TimeText>
       <Item>
-        <TimeItemStyled>
+        <TimeItem>
           <MultiSlider
             min={4}
             max={24}
             step={4}
             onValuesChange={(e) => setFilter({ ...filter, time: e[0] })}
           />
-        </TimeItemStyled>
+        </TimeItem>
       </Item>
-      <AirlineItemStyled>
+      <AirlineItem>
         <Label>Airline</Label>
         <Picker
-          iosIcon={<DownIconStyled type="AntDesign" name="down" />}
+          iosIcon={<DownIcon type="AntDesign" name="down" />}
           selectedValue={filter.airline}
           onValueChange={(airline) => {
             setFilter({ ...filter, airline });
@@ -86,7 +87,7 @@ const Filter = ({ navigation, route }) => {
         >
           {airlinesList}
         </Picker>
-      </AirlineItemStyled>
+      </AirlineItem>
       <FliterButton
         block
         onPress={() => navigation.navigate("FlightList", { filter })}

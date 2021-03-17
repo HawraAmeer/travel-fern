@@ -1,16 +1,16 @@
 import React from "react";
-import { View, Text, Item, Icon, Label } from "native-base";
 
-//Styles
-import { SearchItemStyled, PassengerIconStyled } from "./styles";
+// Styling Components
+import { View, Text, Item, Icon, Label } from "native-base";
+import { SearchItem, PassengerIcon } from "./styles";
 
 const Passengers = ({ flight, setFlight }) => {
   return (
-    <SearchItemStyled>
+    <SearchItem>
       <Icon type="Ionicons" name="people" />
       <Label>Passengers: </Label>
       {flight.passengers > 1 && (
-        <PassengerIconStyled
+        <PassengerIcon
           type="AntDesign"
           name="minuscircleo"
           // remove inline styling
@@ -25,7 +25,7 @@ const Passengers = ({ flight, setFlight }) => {
       )}
 
       <Text> {flight.passengers} </Text>
-      <PassengerIconStyled
+      <PassengerIcon
         type="AntDesign"
         name="pluscircleo"
         // remove inline styling
@@ -37,7 +37,7 @@ const Passengers = ({ flight, setFlight }) => {
           })
         }
       />
-    </SearchItemStyled>
+    </SearchItem>
   );
 };
 

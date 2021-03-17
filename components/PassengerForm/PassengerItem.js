@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-import { View, ListItem, Picker, Input, Button, Text } from "native-base";
+
+// Styling Components
+import { View, ListItem, Picker, Input, Text } from "native-base";
 import {
-  PassItemStyled,
-  PassLabelStyled,
-  PassTextStyled,
+  NextButton,
+  PassItem,
+  PassLabel,
+  PassText,
   PickerArrow,
 } from "./styles";
+
 const PassengerItem = ({ passengers, setPassengers, passengerNum }) => {
   const [passenger, setPassenger] = useState({
     firstName: "",
@@ -20,25 +24,25 @@ const PassengerItem = ({ passengers, setPassengers, passengerNum }) => {
   return (
     <View>
       <ListItem itemDivider>
-        <PassTextStyled>Passenger {passengerNum}</PassTextStyled>
+        <PassText>Passenger {passengerNum}</PassText>
       </ListItem>
-      <PassItemStyled inlineLabel>
-        <PassLabelStyled>First Name:</PassLabelStyled>
+      <PassItem inlineLabel>
+        <PassLabel>First Name:</PassLabel>
         <Input
           onChangeText={(firstName) =>
             setPassenger({ ...passenger, firstName })
           }
           value={passenger.firstName}
         />
-      </PassItemStyled>
-      <PassItemStyled inlineLabel last>
-        <PassLabelStyled>Last Name:</PassLabelStyled>
+      </PassItem>
+      <PassItem inlineLabel last>
+        <PassLabel>Last Name:</PassLabel>
         <Input
           onChangeText={(lastName) => setPassenger({ ...passenger, lastName })}
           value={passenger.lastName}
         />
-      </PassItemStyled>
-      <PassItemStyled picker>
+      </PassItem>
+      <PassItem picker>
         <Picker
           iosIcon={<PickerArrow type="AntDesign" name="down" />}
           selectedValue={passenger.ageGroup}
@@ -50,17 +54,11 @@ const PassengerItem = ({ passengers, setPassengers, passengerNum }) => {
           <Picker.Item label="Child (2-12 years)" value="child" />
           <Picker.Item label="Infant (<2 years)" value="infant" />
         </Picker>
-      </PassItemStyled>
-      {/* remove inline styling */}
+      </PassItem>
       {addBtn && (
-        <Button
-          rounded
-          bordered
-          onPress={() => addPassenger()}
-          style={{ alignSelf: "flex-end", margin: 15, height: 35 }}
-        >
+        <NextButton rounded bordered onPress={addPassenger}>
           <Text>Add</Text>
-        </Button>
+        </NextButton>
       )}
     </View>
   );

@@ -3,8 +3,7 @@ import { View } from "react-native";
 import { useDispatch } from "react-redux";
 import { Form, Text } from "native-base";
 import moment from "moment";
-// Styles
-import { DateItemStyled, SearchMsgStyled, SerachButtonStyled } from "./styles";
+import { searchFlight } from "../../store/actions/flightActions";
 
 // Components
 import TripType from "./TripType";
@@ -15,8 +14,8 @@ import ReturnDate from "./ReturnDate";
 import Passengers from "./Passengers";
 import FlightSeat from "./FlightSeat";
 
-//Actions
-import { searchFlight } from "../../store/actions/flightActions";
+// Styling Components
+import { DateItem, SearchMsg, SerachButton } from "./styles";
 
 const Search = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -70,7 +69,7 @@ const Search = ({ navigation }) => {
         />
         {/* //----------DEPARTURE & ARRIVAL DATES----------// */}
         {/* bothe dates can use one component */}
-        <DateItemStyled>
+        <DateItem>
           <DepDate
             flight={flight}
             setFlight={setFlight}
@@ -85,13 +84,13 @@ const Search = ({ navigation }) => {
               setDisplay={setDisplay}
             />
           )}
-        </DateItemStyled>
+        </DateItem>
 
         {/* //----------NUMBER OF PASSENGERS----------// */}
         <Passengers flight={flight} setFlight={setFlight} />
       </Form>
 
-      <SerachButtonStyled
+      <SerachButton
         block
         onPress={search}
         disabled={
@@ -101,12 +100,12 @@ const Search = ({ navigation }) => {
         }
       >
         <Text>Search</Text>
-      </SerachButtonStyled>
+      </SerachButton>
 
       {flight.arrAirport === flight.depAirport && (
-        <SearchMsgStyled>
+        <SearchMsg>
           Departure and Arrival locations must be diffrent...
-        </SearchMsgStyled>
+        </SearchMsg>
       )}
     </View>
   );

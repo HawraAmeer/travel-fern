@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-import { View, Icon, Button, Text, Content } from "native-base";
 import moment from "moment";
-// Styles
-import { DatesTextStyled, TitleTextSyled, TitleViewStyled } from "./styles";
+
+// Styling Components
+import { View, Icon, Button, Text, Content } from "native-base";
+import { DatesText, TitleText, TitleView } from "./styles";
 
 // Components
 import FlightItem from "../FlightItem";
@@ -24,7 +25,6 @@ const FlightList = ({ navigation, route }) => {
 
   let flightList = flightsReducer.flights;
 
-  //if user filter
   if (route.params) {
     const filter = route.params.filter;
 
@@ -50,14 +50,14 @@ const FlightList = ({ navigation, route }) => {
   return (
     <Content>
       <View>
-        <TitleViewStyled>
-          <TitleTextSyled>{departure.name}</TitleTextSyled>
+        <TitleView>
+          <TitleText>{departure.name}</TitleText>
           <Icon type="AntDesign" name="arrowright" />
-          <TitleTextSyled>{arrival.name}</TitleTextSyled>
-        </TitleViewStyled>
-        <DatesTextStyled>
+          <TitleText>{arrival.name}</TitleText>
+        </TitleView>
+        <DatesText>
           {moment(searchedFlight.depDate).format("dddd, D MMMM")}
-        </DatesTextStyled>
+        </DatesText>
         {_flightList}
         {flightList.length > 1 && (
           <Button

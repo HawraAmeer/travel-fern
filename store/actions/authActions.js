@@ -77,3 +77,15 @@ const removeToken = async () => {
     console.log(e);
   }
 };
+
+export const fetchHistory = () => async (dispatch) => {
+  try {
+    const res = await instance.get(`/`);
+    dispatch({
+      type: types.FETCH_HISTORY,
+      payload: res.data,
+    });
+  } catch (error) {
+    console.log("ERROR: ", error);
+  }
+};

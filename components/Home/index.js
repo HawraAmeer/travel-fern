@@ -1,53 +1,35 @@
-import { Button, Text } from "native-base";
 import React from "react";
-import { View } from "react-native";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-
-// Components
+import {} from "react-native";
 import { signout } from "../../store/actions/authActions";
+import { useSelector, useDispatch } from "react-redux";
+
+// Styling Components
+import { View, Text } from "native-base";
+import { HomeButton, Logout } from "./styles";
 
 const Home = ({ navigation }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.authReducer.user);
-  //remove all inline styling
   return (
     <View>
-      <Button
-        block
-        style={{ margin: 15 }}
-        onPress={() => navigation.navigate("SearchFlight")}
-      >
+      <HomeButton block onPress={() => navigation.navigate("SearchFlight")}>
         <Text>Search Flight</Text>
-      </Button>
-      <Button
-        block
-        style={{ margin: 15 }}
-        onPress={() => navigation.navigate("Signin")}
-      >
+      </HomeButton>
+      <HomeButton block onPress={() => navigation.navigate("Signin")}>
         <Text>Sign in</Text>
-      </Button>
-      <Button
-        block
-        style={{ margin: 15 }}
-        onPress={() => navigation.navigate("Signup")}
-      >
+      </HomeButton>
+      <HomeButton block onPress={() => navigation.navigate("Signup")}>
         <Text>Sign up</Text>
-      </Button>
-      <Button
-        block
-        style={{ margin: 15 }}
-        onPress={() => navigation.navigate("Profile")}
-      >
-        <Text>My Account</Text>
-      </Button>
+      </HomeButton>
       {user && (
-        <Text
-          style={{ textAlign: "center", fontSize: 18 }}
-          onPress={() => dispatch(signout(navigation))}
-        >
-          {user.username}, Logout
-        </Text>
+        <View>
+          <HomeButton block onPress={() => navigation.navigate("Profile")}>
+            <Text>My Account</Text>
+          </HomeButton>
+          <Logout style={{}} onPress={() => dispatch(signout(navigation))}>
+            {user.username}, Logout
+          </Logout>
+        </View>
       )}
     </View>
   );
