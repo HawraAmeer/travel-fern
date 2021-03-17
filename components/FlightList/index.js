@@ -45,7 +45,7 @@ const FlightList = ({ navigation, route }) => {
   }
 
   const _flightList = flightList.map((flight) => (
-    <FlightItem flight={flight} key={flight.id} />
+    <FlightItem flight={flight} key={flight.id} Flightlist="Flightlist" />
   ));
   return (
     <Content>

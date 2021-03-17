@@ -34,7 +34,7 @@ const Profile = ({ navigation }) => {
 
   if (authReducer.loading) return <Loading />;
 
-  console.log("user flights", authReducer.history);
+  // console.log("user flights", authReducer.history);
   const flights = authReducer.history.map((flight) => (
     <ProfileItem flight={flight} key={flight.id} />
   ));
@@ -76,7 +76,8 @@ const Profile = ({ navigation }) => {
         </UpdateButton>
       )}
       <H2>Booked Flights</H2>
-      <ProfileItem />
+      {/* <ProfileItem /> */}
+      {flights}
     </View>
   );
 };

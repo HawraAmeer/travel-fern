@@ -12,4 +12,5 @@ const store = createStore(reducer, applyMiddleware(thunk));
 
 store.dispatch(checkForToken());
 store.dispatch(fetchLocations());
+
 export default store;

@@ -4,59 +4,23 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import * as types from "./types";
 
+// SET USER
 const setUser = (token) => {
   AsyncStorage.setItem("token", token);
   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
-  return {
-    type: types.SET_USER,
-    payload: decode(token),
-  };
+  return { type: types.SET_USER, payload: decode(token) };
 };
 
-export const signin = (userData, navigation) => async (dispatch) => {
+// REMOVE TOKEN
+const removeToken = async () => {
   try {
-    const res = await instance.post("/signin", userData);
-    dispatch(setUser(res.data.token));
-    navigation.replace("Home");
+    await AsyncStorage.removeItem("token");
   } catch (error) {
-    console.log("ERROR: ", error);
+    console.log("Error: ", error);
   }
 };
 
-export const signup = (newUser, navigation) => {
-  return async (dispatch) => {
-    try {
-      const response = await instance.post("/signup", newUser);
-      dispatch(setUser(response.data.token));
-      alert("Signed up sucessfully");
-      navigation.replace("Home");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};
-
-export const signout = (navigation) => {
-  removeToken();
-  delete instance.defaults.headers.common.Authorization;
-  alert("See you again");
-  navigation.replace("Home");
-  return {
-    type: types.SET_USER,
-    payload: null,
-  };
-};
-
-export const updateUser = (updatedUser, navigation) => async (dispatch) => {
-  try {
-    const res = await instance.put(`/`, updatedUser);
-    dispatch(setUser(res.data.token));
-    navigation.replace("Home");
-  } catch (error) {
-    console.log("ERROR: ", error);
-  }
-};
-
+// CHECK TOKEN
 export const checkForToken = () => async (dispatch) => {
   const token = await AsyncStorage.getItem("token");
   if (token) {
@@ -70,22 +34,57 @@ export const checkForToken = () => async (dispatch) => {
   }
 };
 
-const removeToken = async () => {
+// SIGN IN
+export const signin = (userData, navigation) => async (dispatch) => {
   try {
-    await AsyncStorage.removeItem("token");
-  } catch (e) {
-    console.log(e);
+    const res = await instance.post("/signin", userData);
+    dispatch(setUser(res.data.token));
+    navigation.goBack();
+  } catch (error) {
+    console.log("Error: ", error);
   }
 };
 
+// SIGN UP
+export const signup = (newUser, navigation) => {
+  return async (dispatch) => {
+    try {
+      const res = await instance.post("/signup", newUser);
+      dispatch(setUser(res.data.token));
+      alert("Signed up sucessfully");
+      navigation.replace("Home");
+    } catch (error) {
+      console.log("Error: ", error);
+    }
+  };
+};
+
+// SIGN OUT
+export const signout = (navigation) => {
+  removeToken();
+  delete instance.defaults.headers.common.Authorization;
+  alert("See you again");
+  navigation.replace("Home");
+  return { type: types.SET_USER, payload: null };
+};
+
+// UPDATE INFO
+export const updateUser = (updatedUser, navigation) => async (dispatch) => {
+  try {
+    const res = await instance.put(`/`, updatedUser);
+    dispatch(setUser(res.data.token));
+    navigation.replace("Profile");
+  } catch (error) {
+    console.log("Error: ", error);
+  }
+};
+
+// FETCH HISTORY
 export const fetchHistory = () => async (dispatch) => {
   try {
     const res = await instance.get(`/`);
-    dispatch({
-      type: types.FETCH_HISTORY,
-      payload: res.data,
-    });
+    dispatch({ type: types.FETCH_HISTORY, payload: res.data });
   } catch (error) {
-    console.log("ERROR: ", error);
+    console.log("Error: ", error);
   }
 };

@@ -1,5 +1,4 @@
 import React from "react";
-
 // Styling Components
 import {
   CardItem,
@@ -15,7 +14,7 @@ import { AirlineText, FlightCard, LocCardItem, TimeText } from "./styles";
 // Components
 import LineSection from "./LineSection";
 import BookBtn from "../buttons/BookBtn";
-const FlightItem = ({ flight }) => {
+const FlightItem = ({ flight, Flightlist }) => {
   return (
     <FlightCard>
       <CardItem>
@@ -53,7 +52,7 @@ const FlightItem = ({ flight }) => {
         </Right>
       </LocCardItem>
       <Item></Item>
-      <BookBtn flight={flight} />
+      {Flightlist && <BookBtn flight={flight} />}
     </FlightCard>
   );
 };

@@ -25,7 +25,7 @@ const BookBtn = ({ flight }) => {
         depDate: searchedFlight.returnDate,
         arrTime:
           searchedFlight.depDate === searchedFlight.returnDate
-            ? (returnFlight.arrTime = flight.arrTime)
+            ? flight.arrTime
             : null,
         passengers: searchedFlight.passengers,
         seat: searchedFlight.seat,

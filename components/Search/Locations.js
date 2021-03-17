@@ -55,7 +55,7 @@ const Locations = ({ navigation, route }) => {
         <Input placeholder="Search..." onChangeText={setQuery} />
       </Item>
       <List>{locList}</List>
-      <CancelButton onPress={() => navigation.goBack()}>
+      <CancelButton block onPress={() => navigation.goBack()}>
         <Text>Cancel</Text>
       </CancelButton>
     </View>

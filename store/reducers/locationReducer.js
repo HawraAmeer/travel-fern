@@ -6,7 +6,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.FETCH_LOCATION:
+    case types.FETCH_LOCATIONS:
       return { ...state, locations: action.payload, loading: false };
 
     default:
