@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { signin } from "../../store/actions/authActions";
 
-// Styling Components
+// Styling
 import { View, Text, Form, Item, Input, Label } from "native-base";
 import { AuthButton } from "./styles";
+
+// Actions
+import { signin } from "../../store/actions/authActions";
 
 const Signin = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -13,6 +15,7 @@ const Signin = ({ navigation }) => {
   const usersignin = () => {
     dispatch(signin(user, navigation));
   };
+
   return (
     <View>
       <Form>
@@ -34,9 +37,13 @@ const Signin = ({ navigation }) => {
       <AuthButton onPress={usersignin}>
         <Text>Sign in</Text>
       </AuthButton>
-      <Text>Create New Account!</Text>
+      <Text onPress={() => navigation.navigate("Signup")}>
+        Create New Account!
+      </Text>
     </View>
   );
 };
 
 export default Signin;
+
+// use (useForm) for validation

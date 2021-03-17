@@ -1,7 +1,7 @@
 import React from "react";
 
-// Styling Components
-import { View, Text, Item, Icon, Label } from "native-base";
+// Styling
+import { Text, Icon, Label } from "native-base";
 import { SearchItem, PassengerIcon } from "./styles";
 
 const Passengers = ({ flight, setFlight }) => {

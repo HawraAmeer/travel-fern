@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPassengersList } from "../../store/actions/passengerActions";
 
-//Components
-import PassengerItem from "./PassengerItem";
-
-// Styling Components
+// Styling
 import { List, Text, Content } from "native-base";
 import { NextButton } from "./styles";
+
+// Components
+import PassengerItem from "./PassengerItem";
 
 const PassengerForm = ({ navigation }) => {
   const dispatch = useDispatch();

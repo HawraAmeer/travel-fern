@@ -1,30 +1,48 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { bookFlight } from "../../store/actions/flightActions";
 
-// Styling Components
+// Styling
 import { View, Text } from "native-base";
 import { Alert } from "react-native";
 import { NextButton } from "./styles";
 
+// Actions
+import { bookFlight } from "../../store/actions/flightActions";
+
 const ConfirmBtn = ({ navigation }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.authReducer.user);
-  const flightsReducer = useSelector((state) => state.flightReducer);
-  const passengers = useSelector((state) => state.passengerReducer.passengers);
 
+  const flightsReducer = useSelector((state) => state.flightReducer);
   const searchedFlight = flightsReducer.searchedFlight;
   const departureFlight = flightsReducer.departureFlight;
   const returnFlight = flightsReducer.returnFlight;
 
+  const passengers = useSelector((state) => state.passengerReducer.passengers);
+
   const booking = {
     user: user ? { userId: user.id, email: user.email } : "guest",
     passengers: passengers,
-    goFlight: { flightId: departureFlight.id, seat: searchedFlight.seat },
+    goFlight: {
+      flightId: departureFlight.id,
+      seat: searchedFlight.seat,
+      price:
+        searchedFlight.seat === "economy"
+          ? departureFlight.ePrice
+          : departureFlight.bPrice,
+    },
     returnFlight: returnFlight
-      ? { flightId: returnFlight.id, seat: searchedFlight.seat }
+      ? {
+          flightId: returnFlight.id,
+          seat: searchedFlight.seat,
+          price:
+            searchedFlight.seat === "economy"
+              ? departureFlight.ePrice
+              : departureFlight.bPrice,
+        }
       : null,
   };
+
   const handlePress = () => {
     if (user) {
       dispatch(bookFlight(booking));
@@ -32,7 +50,7 @@ const ConfirmBtn = ({ navigation }) => {
     } else {
       Alert.alert(
         "Confirm Booking?",
-        "Sign in before complete the booking ?",
+        "Continue withou signing in ?",
         [
           {
             text: "book as guest",

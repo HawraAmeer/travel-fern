@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-// Styling Components
+// Styling
 import { View, ListItem, Picker, Input, Text } from "native-base";
 import {
   AddButton,
@@ -16,11 +16,13 @@ const PassengerItem = ({ passengers, setPassengers, passengerNum }) => {
     lastName: "",
     ageGroup: "adult",
   });
+
   const [addBtn, setAddBtn] = useState(true);
   const addPassenger = () => {
     setPassengers([...passengers, passenger]);
     setAddBtn(false);
   };
+
   return (
     <View>
       <ListItem itemDivider>

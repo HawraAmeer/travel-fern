@@ -1,22 +1,22 @@
 import React from "react";
 
-// Styling Components
-import { View, Label, Text, Icon } from "native-base";
+// Styling
+import { Label, Text, Icon } from "native-base";
 import { LocationItem } from "./styles";
 
-const DepLocation = ({
+const Location = ({
   navigation,
   flight,
   setFlight,
   display,
   setDisplay,
+  type,
 }) => {
   return (
     <LocationItem
       onPress={() => {
-        request = "depAirport";
         navigation.navigate("Locations", {
-          request,
+          request: type === "dep" ? "depAirport" : "arrAirport",
           setFlight,
           flight,
           display,
@@ -26,9 +26,9 @@ const DepLocation = ({
     >
       <Icon type="MaterialCommunityIcons" name="airplane-takeoff" />
       <Label>From </Label>
-      <Text>{display.depAirport} </Text>
+      <Text>{type === "dep" ? display.depAirport : display.arrAirport} </Text>
     </LocationItem>
   );
 };
 
-export default DepLocation;
+export default Location;

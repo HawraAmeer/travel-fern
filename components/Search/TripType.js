@@ -1,7 +1,7 @@
 import React from "react";
-import { Label, Picker } from "native-base";
 
-// Styling Components
+// Styling
+import { Label, Picker } from "native-base";
 import { SearchItem, TypeIcon } from "./styles";
 
 const TripType = ({ flight, setFlight }) => {

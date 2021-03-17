@@ -1,15 +1,17 @@
 import React from "react";
-import {} from "react-native";
-import { signout } from "../../store/actions/authActions";
 import { useSelector, useDispatch } from "react-redux";
 
-// Styling Components
+// Styling
 import { View, Text } from "native-base";
 import { HomeButton, Logout } from "./styles";
+
+// Actions
+import { signout } from "../../store/actions/authActions";
 
 const Home = ({ navigation }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.authReducer.user);
+
   return (
     <View>
       <HomeButton block onPress={() => navigation.navigate("SearchFlight")}>
@@ -26,7 +28,7 @@ const Home = ({ navigation }) => {
           <HomeButton block onPress={() => navigation.navigate("Profile")}>
             <Text>My Account</Text>
           </HomeButton>
-          <Logout style={{}} onPress={() => dispatch(signout(navigation))}>
+          <Logout onPress={() => dispatch(signout(navigation))}>
             {user.username}, Logout
           </Logout>
         </View>
@@ -36,3 +38,5 @@ const Home = ({ navigation }) => {
 };
 
 export default Home;
+
+// background, welcome message, if user (username & logout btn/icon) else (sign in btn)

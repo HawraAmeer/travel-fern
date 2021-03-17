@@ -7,12 +7,13 @@ import Signin from "../authentication/Signin";
 import Signup from "../authentication/Signup";
 import Profile from "../Profile";
 import Home from "../Home";
-import Search from "../Search";
 import Locations from "../Search/Locations";
+import Search from "../Search";
 import FlightList from "../FlightList";
-import PassengerForm from "../PassengerForm";
 import Filter from "../Filter";
+import PassengerForm from "../PassengerForm";
 import Booking from "../Booking";
+
 const RootNavigator = () => {
   const { Navigator, Screen } = createStackNavigator();
 
@@ -32,15 +33,15 @@ const RootNavigator = () => {
         }}
       >
         <Screen name="Home" component={Home} />
-        <Screen name="Profile" component={Profile} />
-        <Screen name="Signup" component={Signup} />
         <Screen name="Signin" component={Signin} />
-        <Screen name="SearchFlight" component={Search} />
+        <Screen name="Signup" component={Signup} />
+        <Screen name="Profile" component={Profile} />
         <Screen
           name="Locations"
           component={Locations}
           options={{ title: "Select Location", headerLeft: null }}
         />
+        <Screen name="SearchFlight" component={Search} />
         <Screen name="FlightList" component={FlightList} />
         <Screen
           name="Filter"
