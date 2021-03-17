@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-// Styling Components
+// Styling
 import { View, ListItem, Picker, Input, Text } from "native-base";
 import {
-  NextButton,
+  AddButton,
   PassItem,
   PassLabel,
   PassText,
@@ -16,11 +16,13 @@ const PassengerItem = ({ passengers, setPassengers, passengerNum }) => {
     lastName: "",
     ageGroup: "adult",
   });
+
   const [addBtn, setAddBtn] = useState(true);
   const addPassenger = () => {
     setPassengers([...passengers, passenger]);
     setAddBtn(false);
   };
+
   return (
     <View>
       <ListItem itemDivider>
@@ -56,9 +58,9 @@ const PassengerItem = ({ passengers, setPassengers, passengerNum }) => {
         </Picker>
       </PassItem>
       {addBtn && (
-        <NextButton rounded bordered onPress={addPassenger}>
+        <AddButton rounded bordered onPress={addPassenger}>
           <Text>Add</Text>
-        </NextButton>
+        </AddButton>
       )}
     </View>
   );

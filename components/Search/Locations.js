@@ -1,21 +1,12 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
+// Styling
+import { Input, Text, View, Item, Icon, List, ListItem } from "native-base";
+import { CancelButton } from "./styles";
+
 // Components
 import Loading from "../Loading";
-
-// Styling Components
-import {
-  Input,
-  Text,
-  View,
-  Item,
-  Icon,
-  Button,
-  List,
-  ListItem,
-} from "native-base";
-import { CancelButton } from "./styles";
 
 const Locations = ({ navigation, route }) => {
   const [query, setQuery] = useState("");
@@ -55,7 +46,7 @@ const Locations = ({ navigation, route }) => {
         <Input placeholder="Search..." onChangeText={setQuery} />
       </Item>
       <List>{locList}</List>
-      <CancelButton onPress={() => navigation.goBack()}>
+      <CancelButton block onPress={() => navigation.goBack()}>
         <Text>Cancel</Text>
       </CancelButton>
     </View>

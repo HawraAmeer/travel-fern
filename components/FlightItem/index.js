@@ -1,6 +1,6 @@
 import React from "react";
 
-// Styling Components
+// Styling
 import {
   CardItem,
   Thumbnail,
@@ -15,24 +15,22 @@ import { AirlineText, FlightCard, LocCardItem, TimeText } from "./styles";
 // Components
 import LineSection from "./LineSection";
 import BookBtn from "../buttons/BookBtn";
-const FlightItem = ({ flight }) => {
+
+const FlightItem = ({ flight, Flightlist, searchedFlight }) => {
   return (
     <FlightCard>
       <CardItem>
         <Left>
-          {/* put image in assets than import it, or put the one that comes from backend */}
-          <Thumbnail
-            source={{
-              uri:
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCWM07oCcvw217wXFGgdKeHUVyY98bLApfZw&usqp=CAU",
-            }}
-          />
+          <Thumbnail source={{ uri: flight.airline.logo }} />
           <Body>
             <AirlineText>{flight.airline.name}</AirlineText>
           </Body>
         </Left>
         <Right>
-          <AirlineText>{flight.price} BHD</AirlineText>
+          <AirlineText>
+            {searchedFlight.seat === "economy" ? flight.ePrice : flight.bPrice}
+            BHD
+          </AirlineText>
         </Right>
       </CardItem>
       <CardItem cardBody>
@@ -53,7 +51,7 @@ const FlightItem = ({ flight }) => {
         </Right>
       </LocCardItem>
       <Item></Item>
-      <BookBtn flight={flight} />
+      {Flightlist && <BookBtn flight={flight} />}
     </FlightCard>
   );
 };

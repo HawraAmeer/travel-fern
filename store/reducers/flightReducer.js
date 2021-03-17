@@ -10,17 +10,19 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.SEARCH_FLIGHT:
-      return {
-        ...state,
-        flights: action.payload,
-        loading: false,
-        searchedFlight: action.searchedFlight,
-      };
     case types.SET_FLIGHT:
       if (state.departureFlight)
         return { ...state, returnFlight: action.payload };
       else return { ...state, departureFlight: action.payload };
+
+    case types.SEARCH_FLIGHT:
+      return {
+        ...state,
+        flights: action.payload.flights,
+        loading: false,
+        searchedFlight: action.payload.searchedFlight,
+      };
+
     default:
       return state;
   }

@@ -1,17 +1,13 @@
 import React, { useState } from "react";
-import MultiSlider from "@ptomasroos/react-native-multi-slider";
 
-// Styling Components
-import { View, Label, Picker, Text, Item } from "native-base";
-import {
-  AirlineItem,
-  DownIcon,
-  FliterButton,
-  PriceItem,
-  PriceText,
-  TimeItem,
-  TimeText,
-} from "./style";
+// Styling
+import { View, Picker, Text } from "native-base";
+import { FliterButton } from "./style";
+
+// Components
+import Price from "./Price";
+import Time from "./Time";
+import Airline from "./Airline";
 
 const Filter = ({ navigation, route }) => {
   const maxRange = () => {
@@ -21,11 +17,6 @@ const Filter = ({ navigation, route }) => {
     });
     return max;
   };
-  const [filter, setFilter] = useState({
-    price: maxRange(),
-    time: "",
-    airline: "",
-  });
   const minRange = () => {
     let min = maxRange();
     route.params.flights.forEach((flight) => {
@@ -33,6 +24,12 @@ const Filter = ({ navigation, route }) => {
     });
     return min;
   };
+
+  const [filter, setFilter] = useState({
+    price: maxRange(),
+    time: "",
+    airline: "",
+  });
 
   let airlines = route.params.flights.map((flight) => flight.airline.name);
   const airlineSet = new Set(airlines);
@@ -43,51 +40,26 @@ const Filter = ({ navigation, route }) => {
   ));
 
   return (
-    // we can put some sections into components
     <View>
-      <PriceText>
-        Price {"\n"} {filter.price} BHD
-      </PriceText>
-      <Item>
-        <PriceItem>
-          <MultiSlider
-            min={minRange()}
-            max={maxRange()}
-            onValuesChange={(e) => {
-              setFilter({ ...filter, price: e[0] });
-            }}
-          />
-        </PriceItem>
-      </Item>
+      {minRange() !== maxRange() && (
+        <Price
+          filter={filter}
+          setFilter={setFilter}
+          min={minRange()}
+          max={maxRange()}
+        />
+      )}
 
-      <TimeText>
-        Time {"\n"}
-        {filter.time
-          ? `${filter.time - 4}:00 - ${filter.time}:00`
-          : "00:00 - 23:59"}
-      </TimeText>
-      <Item>
-        <TimeItem>
-          <MultiSlider
-            min={4}
-            max={24}
-            step={4}
-            onValuesChange={(e) => setFilter({ ...filter, time: e[0] })}
-          />
-        </TimeItem>
-      </Item>
-      <AirlineItem>
-        <Label>Airline</Label>
-        <Picker
-          iosIcon={<DownIcon type="AntDesign" name="down" />}
-          selectedValue={filter.airline}
-          onValueChange={(airline) => {
-            setFilter({ ...filter, airline });
-          }}
-        >
-          {airlinesList}
-        </Picker>
-      </AirlineItem>
+      <Time filter={filter} setFilter={setFilter} />
+
+      {airlinesList.length > 1 && (
+        <Airline
+          filter={filter}
+          setFilter={setFilter}
+          airlinesList={airlinesList}
+        />
+      )}
+
       <FliterButton
         block
         onPress={() => navigation.navigate("FlightList", { filter })}

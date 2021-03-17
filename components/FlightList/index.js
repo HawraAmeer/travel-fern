@@ -2,17 +2,18 @@ import React from "react";
 import { useSelector } from "react-redux";
 import moment from "moment";
 
-// Styling Components
+// Styling
 import { View, Icon, Button, Text, Content } from "native-base";
 import { DatesText, TitleText, TitleView } from "./styles";
 
 // Components
-import FlightItem from "../FlightItem";
 import Loading from "../Loading";
+import FlightItem from "../FlightItem";
 
 const FlightList = ({ navigation, route }) => {
   const flightsReducer = useSelector((state) => state.flightReducer);
   const locations = useSelector((state) => state.locationReducer.locations);
+
   if (flightsReducer.loading) return <Loading />;
 
   const searchedFlight = flightsReducer.searchedFlight;
@@ -45,8 +46,14 @@ const FlightList = ({ navigation, route }) => {
   }
 
   const _flightList = flightList.map((flight) => (
-    <FlightItem flight={flight} key={flight.id} />
+    <FlightItem
+      flight={flight}
+      key={flight.id}
+      Flightlist="Flightlist"
+      searchedFlight={searchedFlight}
+    />
   ));
+
   return (
     <Content>
       <View>
@@ -63,10 +70,9 @@ const FlightList = ({ navigation, route }) => {
           <Button
             block
             onPress={() => {
-              (flights = flightsReducer.flights),
-                navigation.navigate("Filter", {
-                  flights,
-                });
+              navigation.navigate("Filter", {
+                flights: flightsReducer.flights,
+              });
             }}
           >
             <Text>Filter</Text>

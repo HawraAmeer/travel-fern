@@ -1,11 +1,13 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
-import { searchFlight, setFlight } from "../../store/actions/flightActions";
 
-// Styling Components
+// Styling
 import { CardItem, Text, Left, Right } from "native-base";
 import { BookButton } from "../FlightItem/styles";
+
+// Actions
+import { searchFlight, setFlight } from "../../store/actions/flightActions";
 
 const BookBtn = ({ flight }) => {
   const dispatch = useDispatch();
@@ -25,7 +27,7 @@ const BookBtn = ({ flight }) => {
         depDate: searchedFlight.returnDate,
         arrTime:
           searchedFlight.depDate === searchedFlight.returnDate
-            ? (returnFlight.arrTime = flight.arrTime)
+            ? flight.arrTime
             : null,
         passengers: searchedFlight.passengers,
         seat: searchedFlight.seat,
@@ -35,6 +37,7 @@ const BookBtn = ({ flight }) => {
       navigation.navigate("FlightList");
     }
   };
+
   return (
     <CardItem>
       <Left></Left>

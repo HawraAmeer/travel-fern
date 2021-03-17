@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { signup } from "../../store/actions/authActions";
 
-// Styling Components
+// Styling
 import { View, Text, Form, Item, Input, Label } from "native-base";
 import { AuthButton } from "./styles";
+
+// Actions
+import { signup } from "../../store/actions/authActions";
 
 const Signup = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -12,13 +14,40 @@ const Signup = ({ navigation }) => {
     username: "",
     password: "",
     email: "",
+    firstName: "",
+    lastName: "",
   });
+
   const usersignup = () => {
     dispatch(signup(user, navigation));
   };
+
   return (
     <View>
       <Form>
+        <Item floatingLabel>
+          <Label>First Name</Label>
+          <Input
+            onChangeText={(firstName) => setUser({ ...user, firstName })}
+            value={user.firstName}
+          />
+        </Item>
+        <Item floatingLabel>
+          <Label>Last Name</Label>
+          <Input
+            onChangeText={(lastName) => setUser({ ...user, lastName })}
+            value={user.lastName}
+          />
+        </Item>
+        <Item floatingLabel last>
+          <Label>E-mail</Label>
+          <Input
+            keyboardType="email-address"
+            onChangeText={(email) => setUser({ ...user, email })}
+            value={user.email}
+            autoCapitalize={"none"}
+          />
+        </Item>
         <Item floatingLabel>
           <Label>Username</Label>
           <Input
@@ -35,15 +64,6 @@ const Signup = ({ navigation }) => {
             value={user.password}
           />
         </Item>
-        <Item floatingLabel last>
-          <Label>E-mail</Label>
-          <Input
-            keyboardType="email-address"
-            onChangeText={(email) => setUser({ ...user, email })}
-            value={user.email}
-            autoCapitalize={"none"}
-          />
-        </Item>
       </Form>
       <AuthButton onPress={usersignup}>
         <Text>Sign up</Text>
@@ -53,3 +73,5 @@ const Signup = ({ navigation }) => {
 };
 
 export default Signup;
+
+// use (useForm) for validation

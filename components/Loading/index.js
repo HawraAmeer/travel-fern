@@ -1,5 +1,8 @@
 import React from "react";
+
+// Styling
 import { View, Spinner } from "native-base";
+
 const Loading = () => {
   return (
     <View>
