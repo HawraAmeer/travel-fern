@@ -13,6 +13,7 @@ import FlightList from "../FlightList";
 import Filter from "../Filter";
 import PassengerForm from "../PassengerForm";
 import Booking from "../Booking";
+import FilterButton from "../buttons/FilterButton";
 
 const RootNavigator = () => {
   const { Navigator, Screen } = createStackNavigator();
@@ -22,10 +23,10 @@ const RootNavigator = () => {
       <Navigator
         initialRouteName="Home"
         screenOptions={{
-          cardStyle: { backgroundColor: "white" },
-          headerTintColor: "black",
+          cardStyle: { backgroundColor: "#ABB4C4" },
+          headerTintColor: "#2B2D42",
           headerStyle: {
-            backgroundColor: "white",
+            backgroundColor: "#EEEEEE",
           },
           headerTitleStyle: {
             fontWeight: "bold",
@@ -42,7 +43,11 @@ const RootNavigator = () => {
           options={{ title: "Select Location", headerLeft: null }}
         />
         <Screen name="SearchFlight" component={Search} />
-        <Screen name="FlightList" component={FlightList} />
+        <Screen
+          name="FlightList"
+          component={FlightList}
+          options={{ title: "Flights", headerRight: () => <FilterButton /> }}
+        />
         <Screen
           name="Filter"
           component={Filter}

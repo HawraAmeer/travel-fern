@@ -9,6 +9,7 @@ import { DatesText, TitleText, TitleView } from "./styles";
 // Components
 import Loading from "../Loading";
 import FlightItem from "../FlightItem";
+import { AirIcon } from "../Search/styles";
 
 const FlightList = ({ navigation, route }) => {
   const flightsReducer = useSelector((state) => state.flightReducer);
@@ -23,14 +24,18 @@ const FlightList = ({ navigation, route }) => {
   const arrival = locations.find(
     (location) => location.id === searchedFlight.arrAirport
   );
-
   let flightList = flightsReducer.flights;
 
-  if (route.params) {
+  if (route.params && route.params.filter) {
     const filter = route.params.filter;
 
-    if (filter.price)
-      flightList = flightList.filter((flight) => flight.price <= filter.price);
+    if (filter.price) {
+      flightList = flightList.filter((flight) => {
+        if (searchedFlight.seat === "economy")
+          return flight.ePrice <= filter.price;
+        else return flight.bPrice <= filter.price;
+      });
+    }
 
     if (filter.airline)
       flightList = flightList.filter(
@@ -43,6 +48,7 @@ const FlightList = ({ navigation, route }) => {
           +flight.depTime.split(":")[0] >= +(filter.time - 4) &&
           +flight.depTime.split(":")[0] < +filter.time
       );
+    route.params = undefined;
   }
 
   const _flightList = flightList.map((flight) => (
@@ -59,25 +65,13 @@ const FlightList = ({ navigation, route }) => {
       <View>
         <TitleView>
           <TitleText>{departure.name}</TitleText>
-          <Icon type="AntDesign" name="arrowright" />
+          <AirIcon type="AntDesign" name="arrowright" />
           <TitleText>{arrival.name}</TitleText>
         </TitleView>
         <DatesText>
           {moment(searchedFlight.depDate).format("dddd, D MMMM")}
         </DatesText>
         {_flightList}
-        {flightList.length > 1 && (
-          <Button
-            block
-            onPress={() => {
-              navigation.navigate("Filter", {
-                flights: flightsReducer.flights,
-              });
-            }}
-          >
-            <Text>Filter</Text>
-          </Button>
-        )}
       </View>
     </Content>
   );

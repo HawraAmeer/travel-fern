@@ -10,7 +10,7 @@ import { DateItem, SearchMsg, SerachButton } from "./styles";
 // Components
 import TripType from "./TripType";
 import Location from "./Location";
-import Date from "./Date";
+import SearchDate from "./SearchDate";
 import Passengers from "./Passengers";
 import FlightSeat from "./FlightSeat";
 
@@ -35,7 +35,6 @@ const Search = ({ navigation }) => {
     seat: "economy",
     type: "roundtrip",
   });
-
   const handleSearch = () => {
     dispatch(searchFlight(flight));
     navigation.navigate("FlightList");
@@ -65,20 +64,20 @@ const Search = ({ navigation }) => {
         <TripType flight={flight} setFlight={setFlight} />
 
         <DateItem>
-          <Date
+          <SearchDate
             flight={flight}
             setFlight={setFlight}
             display={display}
             setDisplay={setDisplay}
-            type="dep"
+            type="depDate"
           />
           {flight.type === "roundtrip" && (
-            <Date
+            <SearchDate
               flight={flight}
               setFlight={setFlight}
               display={display}
               setDisplay={setDisplay}
-              type="return"
+              type="returnDate"
             />
           )}
         </DateItem>

@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import { View, ListItem, Picker, Input, Text } from "native-base";
 import {
   AddButton,
+  PassengerDivider,
+  PassengerInput,
   PassItem,
   PassLabel,
   PassText,
@@ -25,12 +27,12 @@ const PassengerItem = ({ passengers, setPassengers, passengerNum }) => {
 
   return (
     <View>
-      <ListItem itemDivider>
+      <PassengerDivider itemDivider>
         <PassText>Passenger {passengerNum}</PassText>
-      </ListItem>
+      </PassengerDivider>
       <PassItem inlineLabel>
         <PassLabel>First Name:</PassLabel>
-        <Input
+        <PassengerInput
           onChangeText={(firstName) =>
             setPassenger({ ...passenger, firstName })
           }
@@ -39,7 +41,7 @@ const PassengerItem = ({ passengers, setPassengers, passengerNum }) => {
       </PassItem>
       <PassItem inlineLabel last>
         <PassLabel>Last Name:</PassLabel>
-        <Input
+        <PassengerInput
           onChangeText={(lastName) => setPassenger({ ...passenger, lastName })}
           value={passenger.lastName}
         />
@@ -58,7 +60,7 @@ const PassengerItem = ({ passengers, setPassengers, passengerNum }) => {
         </Picker>
       </PassItem>
       {addBtn && (
-        <AddButton rounded bordered onPress={addPassenger}>
+        <AddButton dark rounded bordered onPress={addPassenger}>
           <Text>Add</Text>
         </AddButton>
       )}

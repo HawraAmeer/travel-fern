@@ -1,23 +1,26 @@
 import React from "react";
 
 // Styling
-import { Label, Picker } from "native-base";
-import { SearchItem, TypeIcon } from "./styles";
+import { Label, Picker, View } from "native-base";
+import { SearchItem, SearchLabel, TypeIcon } from "./styles";
 
 const TripType = ({ flight, setFlight }) => {
   return (
     <SearchItem>
-      <Label>Trip</Label>
-      <Picker
-        iosIcon={<TypeIcon type="AntDesign" name="down" />}
-        selectedValue={flight.type}
-        onValueChange={(type) => {
-          setFlight({ ...flight, type });
-        }}
-      >
-        <Picker.Item label="Roundtrip" value="roundtrip" />
-        <Picker.Item label="One-way" value="oneway" />
-      </Picker>
+      <SearchLabel>Trip</SearchLabel>
+      <View>
+        <Picker
+          itemStyle={{ color: "red", fontSize: 20 }}
+          iosIcon={<TypeIcon type="AntDesign" name="down" />}
+          selectedValue={flight.type}
+          onValueChange={(type) => {
+            setFlight({ ...flight, type });
+          }}
+        >
+          <Picker.Item label="Roundtrip" value="roundtrip" />
+          <Picker.Item label="One-way" value="oneway" />
+        </Picker>
+      </View>
     </SearchItem>
   );
 };
