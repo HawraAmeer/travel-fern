@@ -2,12 +2,12 @@ import React from "react";
 
 // Styling
 import { Label, Picker } from "native-base";
-import { ArrowDown, SearchItem } from "./styles";
+import { ArrowDown, SearchItem, SearchLabel } from "./styles";
 
 const FlightSeat = ({ flight, setFlight }) => {
   return (
     <SearchItem>
-      <Label>Seat Type</Label>
+      <SearchLabel>Seat Type</SearchLabel>
       <Picker
         // remove inline styling
         iosIcon={<ArrowDown type="AntDesign" name="down" />}

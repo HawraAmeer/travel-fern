@@ -10,18 +10,28 @@ import {
   Right,
   Item,
 } from "native-base";
-import { AirlineText, FlightCard, LocCardItem, TimeText } from "./styles";
+import {
+  AirlineText,
+  FlightCard,
+  LocationText,
+  LocCardItem,
+  TimeText,
+} from "./styles";
 
 // Components
 import LineSection from "./LineSection";
 import BookBtn from "../buttons/BookBtn";
 
+const image = {
+  uri:
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCWM07oCcvw217wXFGgdKeHUVyY98bLApfZw&usqp=CAU",
+};
 const FlightItem = ({ flight, Flightlist, searchedFlight }) => {
   return (
     <FlightCard>
       <CardItem>
         <Left>
-          <Thumbnail source={{ uri: flight.airline.logo }} />
+          <Thumbnail source={image} />
           <Body>
             <AirlineText>{flight.airline.name}</AirlineText>
           </Body>
@@ -44,10 +54,10 @@ const FlightItem = ({ flight, Flightlist, searchedFlight }) => {
       <LineSection />
       <LocCardItem cardBody>
         <Left>
-          <Text>{flight.departure.name}</Text>
+          <LocationText>{flight.departure.name}</LocationText>
         </Left>
         <Right>
-          <Text>{flight.arrival.name}</Text>
+          <LocationText>{flight.arrival.name}</LocationText>
         </Right>
       </LocCardItem>
       <Item></Item>

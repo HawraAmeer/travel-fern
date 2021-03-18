@@ -2,7 +2,7 @@ import React from "react";
 
 // Styling
 import { Label, Text, Icon } from "native-base";
-import { LocationItem } from "./styles";
+import { AirIcon, LocationItem, LocationText, SearchLabel } from "./styles";
 
 const Location = ({
   navigation,
@@ -24,9 +24,14 @@ const Location = ({
         });
       }}
     >
-      <Icon type="MaterialCommunityIcons" name="airplane-takeoff" />
-      <Label>From </Label>
-      <Text>{type === "dep" ? display.depAirport : display.arrAirport} </Text>
+      <AirIcon
+        type="MaterialCommunityIcons"
+        name={type === "dep" ? "airplane-takeoff" : "airplane-landing"}
+      />
+      <SearchLabel>{type === "dep" ? "From" : "To"}</SearchLabel>
+      <LocationText>
+        {type === "dep" ? display.depAirport : display.arrAirport}{" "}
+      </LocationText>
     </LocationItem>
   );
 };

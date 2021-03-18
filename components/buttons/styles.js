@@ -1,6 +1,10 @@
 import styled from "styled-components";
-import { Button } from "native-base";
+import { Button, Icon } from "native-base";
 
 export const NextButton = styled(Button)`
-  margin: 15px;
+  margin: 25px 20px;
+  background-color: #2b2d42;
+`;
+export const FilterIcon = styled(Icon)`
+  color: #2b2d42;
 `;

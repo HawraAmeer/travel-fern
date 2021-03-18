@@ -8,19 +8,26 @@ import { FliterButton } from "./style";
 import Price from "./Price";
 import Time from "./Time";
 import Airline from "./Airline";
+import { useSelector } from "react-redux";
 
 const Filter = ({ navigation, route }) => {
+  const searchedFlight = useSelector(
+    (state) => state.flightReducer.searchedFlight
+  );
+  const seatPrice = searchedFlight.seat === "economy" ? "ePrice" : "bPrice";
+
   const maxRange = () => {
     let max = 0;
     route.params.flights.forEach((flight) => {
-      if (flight.price > max) max = flight.price;
+      if (flight[seatPrice] > max) max = flight[seatPrice];
     });
     return max;
   };
+
   const minRange = () => {
     let min = maxRange();
     route.params.flights.forEach((flight) => {
-      if (flight.price < min) min = flight.price;
+      if (flight[seatPrice] < min) min = flight[seatPrice];
     });
     return min;
   };
@@ -52,13 +59,11 @@ const Filter = ({ navigation, route }) => {
 
       <Time filter={filter} setFilter={setFilter} />
 
-      {airlinesList.length > 1 && (
-        <Airline
-          filter={filter}
-          setFilter={setFilter}
-          airlinesList={airlinesList}
-        />
-      )}
+      <Airline
+        filter={filter}
+        setFilter={setFilter}
+        airlinesList={airlinesList}
+      />
 
       <FliterButton
         block

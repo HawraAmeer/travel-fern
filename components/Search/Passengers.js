@@ -2,19 +2,23 @@ import React from "react";
 
 // Styling
 import { Text, Icon, Label } from "native-base";
-import { SearchItem, PassengerIcon } from "./styles";
+import {
+  SearchItem,
+  PassengerIcon,
+  AirIcon,
+  PassengerNumber,
+  SearchLabel,
+} from "./styles";
 
 const Passengers = ({ flight, setFlight }) => {
   return (
     <SearchItem>
-      <Icon type="Ionicons" name="people" />
-      <Label>Passengers: </Label>
+      <AirIcon type="Ionicons" name="people" />
+      <SearchLabel>Passengers: </SearchLabel>
       {flight.passengers > 1 && (
         <PassengerIcon
           type="AntDesign"
           name="minuscircleo"
-          // remove inline styling
-          style={{ marginLeft: 10 }}
           onPress={() =>
             setFlight({
               ...flight,
@@ -24,12 +28,10 @@ const Passengers = ({ flight, setFlight }) => {
         />
       )}
 
-      <Text> {flight.passengers} </Text>
+      <PassengerNumber> {flight.passengers} </PassengerNumber>
       <PassengerIcon
         type="AntDesign"
         name="pluscircleo"
-        // remove inline styling
-        style={{ marginLeft: 10 }}
         onPress={() =>
           setFlight({
             ...flight,

@@ -1,13 +1,14 @@
 import React from "react";
 
 // Styling
-import { Label, Picker } from "native-base";
-import { AirlineItem, DownIcon } from "./style";
+import { Picker } from "native-base";
+import { AirlineItem, AirlineLabel, DownIcon } from "./style";
+import { SearchLabel } from "../Search/styles";
 
 const Airline = ({ filter, setFilter, airlinesList }) => {
   return (
     <AirlineItem>
-      <Label>Airline</Label>
+      <AirlineLabel>Airline</AirlineLabel>
       <Picker
         iosIcon={<DownIcon type="AntDesign" name="down" />}
         selectedValue={filter.airline}

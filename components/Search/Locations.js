@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 // Styling
 import { Input, Text, View, Item, Icon, List, ListItem } from "native-base";
-import { CancelButton } from "./styles";
+import { AirIcon, CancelButton, LocationName } from "./styles";
 
 // Components
 import Loading from "../Loading";
@@ -36,13 +36,13 @@ const Locations = ({ navigation, route }) => {
       }}
       key={location.id}
     >
-      <Text>{location.name}</Text>
+      <LocationName>{location.name}</LocationName>
     </ListItem>
   ));
   return (
     <View>
       <Item>
-        <Icon type="EvilIcons" name="search" />
+        <AirIcon type="EvilIcons" name="search" />
         <Input placeholder="Search..." onChangeText={setQuery} />
       </Item>
       <List>{locList}</List>
